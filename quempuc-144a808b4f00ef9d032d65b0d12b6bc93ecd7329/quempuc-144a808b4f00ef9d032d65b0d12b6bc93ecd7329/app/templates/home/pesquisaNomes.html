@@ -1,0 +1,20 @@
+<p class="lead" style="text-align: center">Orientadores, pesquisadores e professores com o termo <em>{{busca}}:</em></p>
+<div>
+    <table id="tabelaProfessores" class="dt-responsive table table-striped table-bordered">
+        <thead>
+            <tr>
+                <th class="th-sm titulo-aba">Professores/Pesquisadores</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for nome in nomes %}
+            <tr>
+                <td class="nome-individuo">
+                    <a class="tabela" id="biografias">{{ nome.upper() }}</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</br>

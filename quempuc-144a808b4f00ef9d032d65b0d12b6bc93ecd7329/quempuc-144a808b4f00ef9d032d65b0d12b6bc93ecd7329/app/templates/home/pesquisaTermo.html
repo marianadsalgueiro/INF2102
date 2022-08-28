@@ -1,0 +1,177 @@
+<p class="lead" style="text-align: center">Produções relacionadas com o termo <em>{{busca}}:</em></p>
+<div>
+    <ul class="nav nav-tabs">
+        {# prepando o loop para a tabela #}
+        {% set tabs = ['Artigos', 'Livros', 'Capítulos', 'Orientações', 'Disciplinas', 'Biografias'] %}
+        {% set conteudo = [artigos, livros, capitulos, teses, disciplinas, bios] %}
+        {% set aba_inicial = namespace(i=0) %} {# i -> valor da aba a ser aberta #}
+        {# no jinja, uma variavel nao pode ser alterada dentro de um outro escopo. Para fugir disso, #}
+        {# foi usado esse namespace para conseguir alterar fora do escopo #}
+        {# https://jinja.palletsprojects.com/en/master/templates/#assignments #}
+
+        {% for i in range(tabs|length) %}  {# loop da tabela #}
+            {% if conteudo[i]|length > 0 and aba_inicial.i == 0 %}
+                {% set active = 'active' %}
+                {% set aba_inicial.i = i + 1 %} {# configura o i como aba a ser exibida #}
+            {% else %}
+                {% set active = '' %}
+            {% endif %}
+            <li class="nav-item {{ active }}">
+            {# criando o icone: #}
+                <span class="fa-stack icon-deslocado">
+                    {% if conteudo[i]|length > 0 %}
+                    <i class="fas fa-circle fa-stack-2x com-conteudo" ></i>  {# possui conteudo #}
+                    {% else %}
+                    <i class="fas fa-circle fa-stack-2x sem-conteudo" ></i>  {# sem conteudo #}
+                    {% endif %}
+                    <strong class="fa-stack-1x">{{ conteudo[i]|length }}</strong>  {# numero #}
+                </span>
+                <a class="nav-link {{ active }}" href="#tab-table{{ i + 1 }}" data-toggle="tab">{{ tabs[i] }}</a>  {# nome #}
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="tab-content" style="padding-top: 10px;" >
+        <div class="tab-pane{% if aba_inicial.i == 1 %}{{ ' active' }}{% endif %}" id="tab-table1">
+            <table id="Table1" class="dt-responsive table table-striped table-bordered" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="th-sm titulo-aba">Nome</th>
+                        <th class="th-sm titulo-aba">Artigos</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for artigo in artigos %}
+                        <tr>
+                            <td class="nome-individuo">
+                                <a class="tabela" id="artigos">
+                                    {{ artigo.upper() }}
+                                </a>
+                            </td>
+                            <td class="quantidade-individuo">{{ artigos[artigo]['countArticle'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane{% if aba_inicial.i == 2 %}{{ ' active' }}{% endif %}" id="tab-table2">
+            <table id="Table2" class="dt-responsive table table-striped table-bordered" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="th-sm titulo-aba">Nome</th>
+                        <th class="th-sm titulo-aba">Livros</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for livro in livros %}
+                        <tr>
+                            <td class="nome-individuo">
+                                <a class="tabela" id="livros">
+                                    {{ livro.upper() }}
+                                </a>
+                            </td>
+                            <td class="quantidade-individuo">{{ livros[livro]['countBook'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane{% if aba_inicial.i == 3 %}{{ ' active' }}{% endif %}" id="tab-table3">
+            <table id="Table3" class="dt-responsive table table-striped table-bordered" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="th-sm titulo-aba">Nome</th>
+                        <th class="th-sm titulo-aba">Capítulos&nbsp;&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for capitulo in capitulos %}
+                        <tr>
+                            <td class="nome-individuo">
+                                <a class="tabela" id="capitulos">
+                                    {{ capitulo.upper() }}
+                                </a>
+                            </td>
+                            <td class="quantidade-individuo">{{ capitulos[capitulo]['countChapter']}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane{% if aba_inicial.i == 4 %}{{ ' active' }}{% endif %}" id="tab-table4">
+            <table id="Table4" class="dt-responsive table table-striped table-bordered" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="th-sm titulo-aba">Nome</th>
+                        <th class="th-sm titulo-aba">Orientações&nbsp;&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for tese in teses %}
+                        <tr>
+                            <td class="nome-individuo">
+                                <a class="tabela" id="teses">
+                                    {{ tese.upper() }}
+                                </a>
+                            </td>
+                            <td class="quantidade-individuo">{{ teses[tese]['countThesis'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane{% if aba_inicial.i == 5 %}{{ ' active' }}{% endif %}" id="tab-table5">
+            <table id="Table5" class="dt-responsive table table-striped table-bordered" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="th-sm titulo-aba">Nome</th>
+                        <th class="th-sm titulo-aba">Disciplinas&nbsp;&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for disciplina in disciplinas %}
+                        <tr>
+                            <td class="nome-individuo">
+                                <a class="tabela" id="disciplinas">
+                                    {{ disciplina.upper() }}
+                                </a>
+                            </td>
+                            <td class="quantidade-individuo">{{ disciplinas[disciplina]['countDisciplinas'] }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        <div class="tab-pane{% if aba_inicial.i == 6 %}{{ ' active' }}{% endif %}" id="tab-table6">
+            <table id="Table6" class="dt-responsive table table-striped table-bordered" style="width: 100%;">
+                <thead>
+                    <tr>
+                        <th class="th-sm titulo-aba">Nome</th>
+                        <th class="th-sm titulo-aba">Biografias&nbsp;&nbsp;</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for bio in bios %}
+                        <tr>
+                            <td class="nome-individuo">
+                                <a class="tabela" id="biografias">
+                                    {{ bio.upper() }}
+                                </a></td>
+                            <td class="quantidade-individuo">{{ bios[bio]['countBio']}}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+<br>
+{# guarda o id da table clicada para a pagina about #}
+<script>
+    $(document).ready(function(){
+		$('.tabela').mousedown(function() {
+            var activeTab = this.id;
+            localStorage.setItem("activeTab", activeTab);
+          });
+		}
+	);   
+</script>

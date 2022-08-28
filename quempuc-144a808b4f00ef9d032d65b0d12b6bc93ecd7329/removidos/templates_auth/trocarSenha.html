@@ -1,0 +1,33 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+
+{% block body %}
+<br>
+<div class="container">
+    {% include "errors/flash.html" %}
+    <div class="jumbotron">
+        <div style="width: 50%; margin: 0 auto;">
+            <h3>Criar nova senha</h3>
+            <br>
+            <h5>Usuário: {{ nome_usuario }}</h5>
+            <br>
+            <form name="form-register" action="" method="post" class="form" role="form">
+                {{ form.csrf_token() }}
+                <div>
+                    {{ wtf.form_field(form.senha)}}
+                </div>
+                <div>
+                    {{ wtf.form_field(form.senhaConfirma)}}
+                </div>
+                <br>
+                <div style="text-align: center; display: inline-block">
+                    {{ form.submit(class_="btn btn-secondary")}}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<script>
+
+</script>
+{% endblock %}

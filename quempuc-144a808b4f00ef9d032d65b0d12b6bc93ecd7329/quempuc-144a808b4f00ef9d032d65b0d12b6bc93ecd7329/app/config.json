@@ -1,0 +1,17 @@
+{
+  "lattes": {
+    "atual": "jun/2022",
+    "proximo": "ago/2022"
+  },
+  "conexoes": [
+    "lattes-professores-jun22", "lattes-professores2-jun22", "matriculas_mai21", "cadastro_puc_etl"
+  ],
+  "repositorios": {
+    "bio": "http://purl.org/vocab/bio/0.1/",
+    "bibo": "http://purl.org/ontology/bibo/",
+    "ccso": "https://w3id.org/ccso/ccso#",
+    "sch": "http://schema.org/"
+  },
+  "email": "slifschitz@puc-rio.br",
+  "qtdProducoes": 5
+}

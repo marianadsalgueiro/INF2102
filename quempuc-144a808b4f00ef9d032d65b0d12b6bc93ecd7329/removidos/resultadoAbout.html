@@ -1,0 +1,57 @@
+{# TAB_NOME = Nome da aba no dicionario #}
+{# TAB_SINGULAR = nome da aba no singular #}
+{# nome do veja mais no dicionario #}
+{% set TAB_OUTROS = 'mais' + TAB_DICT %}
+{# conteudo que sera iterado #}
+{% set CONTEUDO = dados.get(TAB_DICT) %}
+{% set CONTEUDO_OUTROS = dados.get(TAB_OUTROS) %}
+{# corrigindo problema que orientacoes eh feminino e os outros sao masculinos #}
+{# F eh a terminacao 'a' para feminino e 'o' para masculino #}
+{# FF eh a terminacao 'a' para feminino e '' para masculino #}
+{% if not FEMININO %}{% set a_ou_o = 'o' %}{% set a_ou_nada = '' %}
+{% else %}{% set a_ou_o = 'a' %}{% set a_ou_nada = a_ou_o %}{% endif %}
+
+<div class="card-body">
+{% if flagNome == 0 %} {# QUANDO A CONSULTA FOI POR TERMO #}
+    {% if CONTEUDO %}
+        {# mostra o conteudo normalmente #}
+        <ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+            {% for dds in chaves_ordenadas(CONTEUDO) %}
+                <li><b>{{ highlight(dds, busca)|safe }},</b> {{ ', '.join(CONTEUDO[dds]) }}<br></li>
+            {% endfor %}
+        </ul>
+
+    {% elif not CONTEUDO and CONTEUDO_OUTROS %}
+        {# mostra que nao tem para aquele termo, pois ainda tem o veja mais #}
+        <div class="lead" style="font-size: 18px; padding: 20px; text-align: justify;"> Nenhum{{ a_ou_nada }} {{ TAB_SINGULAR }} encontrad{{ a_ou_o }} para o termo <i>'{{ busca }}'</i>. </div>
+
+    {% else %}
+        {# mostra que nao tem nada, nem veja mais #}
+        <div class="lead" style="font-size: 18px; padding: 20px; text-align: justify;"> Nenhum{{ a_ou_nada }} {{ TAB_SINGULAR }} encontrad{{ a_ou_o }}. </div>
+
+    {% endif %}
+
+    {% if CONTEUDO_OUTROS %} {# veja mais / outros #}
+    <hr>
+    <br>
+    <h4>{{ TAB_PLURAL.capitalize() }} mais recentes:</h4>
+        <ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+            {% for dds in CONTEUDO_OUTROS %}    {# ja esta ordenado, nao precisa passar pelo chaves_ordenadas(...) #}
+                <li><b>{{dds}},</b> {{ ', '.join(CONTEUDO_OUTROS[dds]) }}<br></li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+{% else %} {# QUANDO A CONSULTA FOI POR NOME #}
+    {% if CONTEUDO_OUTROS %}
+    <h4>{{ TAB_PLURAL.capitalize() }} mais recentes:</h4>
+        <ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+            {% for dds in chaves_ordenadas(CONTEUDO_OUTROS) %}
+                <li><b>{{dds}},</b> {% for autor in CONTEUDO_OUTROS[dds] %}{{ autor }}, {% endfor %}<br></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+    <div class="lead" style="font-size: 18px; padding: 20px; text-align: justify;"> Nenhum{{ a_ou_nada }} {{ TAB_SINGULAR }} encontrad{{ a_ou_o }}. </div>
+    {% endif %}
+{% endif %}
+</div>

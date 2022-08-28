@@ -1,0 +1,333 @@
+[ {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990",
+    "@type" : [ "http://linkedpipes.com/ontology/Pipeline" ],
+    "http://etl.linkedpipes.com/ontology/version" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#int",
+      "@value" : "2"
+    } ],
+    "http://linkedpipes.com/ontology/profile" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/2"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#note" : [ {
+      "@value" : "Converter conj de lattes de professores em XML com script customizado"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "DSV - Converter CV Lattes [UC4] - lattes_professores.xsl"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/2",
+    "@type" : [ "http://linkedpipes.com/ontology/ExecutionProfile" ],
+    "http://linkedpipes.com/ontology/rdfRepositoryPolicy" : [ {
+      "@id" : "http://linkedpipes.com/ontology/repository/SingleRepository"
+    } ],
+    "http://linkedpipes.com/ontology/rdfRepositoryType" : [ {
+      "@id" : "http://linkedpipes.com/ontology/repository/NativeStore"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/3",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/graph/16"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/l-filesToLocal/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1958"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "431"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files to local"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/4",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/graph/12"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-xslt/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1112"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "322"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Aplicar lattes_professores.xsl para gerar RDF"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "XSLT transformer"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/5",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/graph/14"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/e-filesFromLocal/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "559"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "77"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Leitura dos arquivos da pasta /home/cloud-di/lattes-data"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files from local"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/7",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/10"
+    } ],
+    "http://linkedpipes.com/ontology/disabled" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "true"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-filesFilter/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "783"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "238"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Filtrar arquivos *.xml"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files filter"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/054c-ba8f",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/054c-ba8f/configuration"
+    } ],
+    "http://linkedpipes.com/ontology/disabled" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "true"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-rdfToFile/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1797"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "265"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "RDF to file"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/0dd3-9130",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/0dd3-9130/configuration"
+    } ],
+    "http://linkedpipes.com/ontology/disabled" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "true"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-filesToRdfGraph/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1592"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "43"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files to RDF single graph"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/connection/383a-b84b",
+    "@type" : [ "http://linkedpipes.com/ontology/Connection" ],
+    "http://linkedpipes.com/ontology/sourceBinding" : [ {
+      "@value" : "FilesOutput"
+    } ],
+    "http://linkedpipes.com/ontology/sourceComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/4"
+    } ],
+    "http://linkedpipes.com/ontology/targetBinding" : [ {
+      "@value" : "FilesInput"
+    } ],
+    "http://linkedpipes.com/ontology/targetComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/3"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/connection/604b-a05b",
+    "@type" : [ "http://linkedpipes.com/ontology/Connection" ],
+    "http://linkedpipes.com/ontology/sourceBinding" : [ {
+      "@value" : "FilesOutput"
+    } ],
+    "http://linkedpipes.com/ontology/sourceComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/5"
+    } ],
+    "http://linkedpipes.com/ontology/targetBinding" : [ {
+      "@value" : "FilesInput"
+    } ],
+    "http://linkedpipes.com/ontology/targetComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/4"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/connection/a4dd-aeb2",
+    "@type" : [ "http://linkedpipes.com/ontology/Connection" ],
+    "http://linkedpipes.com/ontology/sourceBinding" : [ {
+      "@value" : "OutputRdf"
+    } ],
+    "http://linkedpipes.com/ontology/sourceComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/0dd3-9130"
+    } ],
+    "http://linkedpipes.com/ontology/targetBinding" : [ {
+      "@value" : "Configuration"
+    } ],
+    "http://linkedpipes.com/ontology/targetComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/054c-ba8f"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583961858990"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/10",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-filesFilter#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-filesFilter#fileNamePattern" : [ {
+      "@value" : ".xml"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesFilter#fileNamePatternControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583961858990/10"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/054c-ba8f/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-rdfToFile#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileName" : [ {
+      "@value" : "professores.rdf"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileNameControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileType" : [ {
+      "@value" : "application/rdf+xml"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileTypeControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#graphUri" : [ {
+      "@id" : "http://localhost/default"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#graphUriControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/054c-ba8f/configuration"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/0dd3-9130/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#commitSize" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "50000"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#commitSizeControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#mimeType" : [ {
+      "@value" : ""
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#mimeTypeControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#softFail" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "false"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#softFailControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583961858990/component/0dd3-9130/configuration"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/4/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-xslt#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#extension" : [ {
+      "@value" : "rdf"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#extensionControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#skipOnError" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "false"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#skipOnErrorControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#template" : [ {
+      "@value" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n\n<!--\nLICENSE INFO\n\nThis work is licensed under the Creative Commons\nAttribution-ShareAlike 3.0 Brazil License. To view a copy of this\nlicense, visit http://creativecommons.org/licenses/by-sa/3.0/br/ or\nsend a letter to Creative Commons, 444 Castro Street, Suite 900,\nMountain View, California, 94041, USA.\n-->\n\n<!DOCTYPE rdf:RDF [\n <!ENTITY  xsd \"http://www.w3.org/2001/XMLSchema#\">\n <!ENTITY bibo \"http://purl.org/ontology/bibo/\">\n <!ENTITY foaf \"http://xmlns.com/foaf/0.1/\">\n <!ENTITY  geo \"http://www.w3.org/2003/01/geo/wgs84_pos#\">\n <!ENTITY skos \"http://www.w3.org/2004/02/skos/core#\">\n <!ENTITY doac \"http://ramonantonio.net/doac/0.1/\">\n <!ENTITY bio  \"http://purl.org/vocab/bio/0.1/\">\n <!ENTITY vivo \"https://duraspace.org/vivo/\">\n]>\n\n<xsl:stylesheet version=\"1.0\"\n    xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"\n    xmlns:bio=\"http://purl.org/vocab/bio/0.1/\"\n    xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n    xmlns:rdfs=\"http://www.w3.org/2000/01/rdf-schema#\"\n    xmlns:xsd=\"http://www.w3.org/2001/XMLSchema#\"\n    xmlns:foaf=\"http://xmlns.com/foaf/0.1/\"\n    xmlns:dc=\"http://purl.org/dc/elements/1.1/\"\n    xmlns:doac=\"http://ramonantonio.net/doac/0.1/\"\n    xmlns:dcterms=\"http://purl.org/dc/terms/\"\n    xmlns:skos=\"http://www.w3.org/2004/02/skos/core#\"\n                xmlns:cnpqterms=\"http://estatico.cnpq.br/bi/CNPQ/DadosAbertos/Tabelas/AreaConhecimento/area_conhecimento.xsd#\"\n    xmlns:event=\"http://purl.org/NET/c4dm/event.owl#\"\n    xmlns:gn=\"http://www.geonames.org/ontology#\"\n    xmlns:geo=\"http://www.w3.org/2003/01/geo/wgs84_pos#\"\n    xmlns:bibo=\"http://purl.org/ontology/bibo/\"\n    xmlns:lattes=\"http://www.cnpq.br/2001/XSL/Lattes\"\n    xmlns:vivo=\"https://duraspace.org/vivo/\">\n\n  <xsl:output method=\"xml\" encoding=\"UTF-8\" indent=\"yes\" />\n  <xsl:param name=\"ID\" />\n\n  <xsl:template match=\"/\">\n    <rdf:RDF>\n      <xsl:attribute name=\"xml:base\">\n  <xsl:choose>\n    <xsl:when test=\"string-length(/CURRICULO-VITAE/@NUMERO-IDENTIFICADOR)>0\">\n      <xsl:value-of select=\"concat('http://www.nima.puc-rio.br/lattes/',\n          /CURRICULO-VITAE/@NUMERO-IDENTIFICADOR)\"/>\n    </xsl:when>\n    <xsl:otherwise>\n      <xsl:value-of select=\"concat('http://www.nima.puc-rio.br/lattes/',$ID)\"/>\n    </xsl:otherwise>\n  </xsl:choose>\n      </xsl:attribute>\n\n      <xsl:apply-templates />\n      <xsl:apply-templates select=\"//AUTORES\" mode=\"full\"/>\n    </rdf:RDF>\n  </xsl:template>\n\n  <xsl:template match=\"AUTORES\" mode=\"full\">\n    <rdf:Description>\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:attribute>\n      <xsl:if test=\"normalize-space(@NRO-ID-CNPQ) != ''\">\n  <foaf:identifier><xsl:value-of select=\"@NRO-ID-CNPQ\"/></foaf:identifier>\n      </xsl:if>\n      <foaf:name><xsl:value-of select=\"@NOME-COMPLETO-DO-AUTOR\"/></foaf:name>\n      <foaf:citationName><xsl:value-of select=\"@NOME-PARA-CITACAO\"/></foaf:citationName>\n      <rdf:type rdf:resource=\"&foaf;Person\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"CURRICULO-VITAE\">\n    <rdf:Description rdf:about=\"\">\n      <rdf:type rdf:resource=\"&foaf;Document\" />\n      <dc:type rdf:resource=\"http://purl.org/dc/dcmitype/Text\" />\n      <dc:title>CV Lattes de <xsl:value-of select=\"DADOS-GERAIS/@NOME-COMPLETO\"/></dc:title>\n      <xsl:choose>\n  <xsl:when test=\"normalize-space(@NUMERO-IDENTIFICADOR) != ''\">\n    <bibo:identifier> <xsl:value-of select=\"@NUMERO-IDENTIFICADOR\"/> </bibo:identifier>\n  </xsl:when>\n  <xsl:otherwise>\n    <bibo:identifier> <xsl:value-of select=\"$ID\"/> </bibo:identifier>\n  </xsl:otherwise>\n      </xsl:choose>\n      <dcterms:issued><xsl:value-of select=\"@DATA-ATUALIZACAO\" /></dcterms:issued>\n      <dc:creator><xsl:apply-templates select=\"DADOS-GERAIS\" mode=\"ref-resource\"/></dc:creator>\n    </rdf:Description>\n    <xsl:apply-templates select=\"PRODUCAO-BIBLIOGRAFICA|OUTRA-PRODUCAO|DADOS-GERAIS\" />\n  </xsl:template>\n\n  <xsl:template match=\"DADOS-GERAIS\" mode=\"ref\">\n    <xsl:choose>\n      <xsl:when test=\"string-length(ENDERECO/ENDERECO-PROFISSIONAL/@E-MAIL)>0\">\n  <xsl:value-of select=\"concat('mailto:',ENDERECO/ENDERECO-PROFISSIONAL/@E-MAIL)\"/>\n      </xsl:when>\n      <xsl:otherwise>\n  <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:otherwise>\n    </xsl:choose>\n  </xsl:template>\n\n\n  <xsl:template match=\"OUTRA-PRODUCAO|PRODUCAO-BIBLIOGRAFICA|TRABALHOS-EM-EVENTOS|ARTIGOS-PUBLICADOS|LIVROS-E-CAPITULOS|\n           LIVROS-PUBLICADOS-OU-ORGANIZADOS|CAPITULOS-DE-LIVROS-PUBLICADOS|TEXTOS-EM-JORNAIS-OU-REVISTAS|DADOS-GERAIS|\n                       FORMACAO-ACADEMICA-TITULACAO\">\n    <xsl:apply-templates />\n  </xsl:template>\n\n  <xsl:template match=\"ORIENTACOES-CONCLUIDAS\">\n    <xsl:apply-templates />\n  </xsl:template>\n\n  <xsl:template match=\"DADOS-GERAIS\" mode=\"ref-resource\">\n    <rdf:Description>\n      <xsl:attribute name=\"rdf:about\">\n  <!-- <xsl:apply-templates select=\"DADOS-GERAIS-PESSOA\" mode=\"ref-resource\"/> -->\n  <xsl:choose>\n      <xsl:when test=\"string-length(/CURRICULO-VITAE/@NUMERO-IDENTIFICADOR)>0\">\n        <xsl:value-of select=\"concat('#author-',\n            /CURRICULO-VITAE/@NUMERO-IDENTIFICADOR)\"/>\n      </xsl:when>\n      <xsl:otherwise>\n        <xsl:value-of select=\"concat('#author-',$ID)\"/>\n      </xsl:otherwise>\n    </xsl:choose>\n      </xsl:attribute>\n      <xsl:if test=\"string-length(ENDERECO/ENDERECO-PROFISSIONAL/@E-MAIL)>0\">\n  <foaf:identifier>\n    <xsl:apply-templates select=\".\" mode=\"ref\"/>\n  </foaf:identifier>\n      </xsl:if>\n      <xsl:if test=\"string-length(@SEXO)>0\">\n        <foaf:gender><xsl:value-of select=\"@SEXO\"/></foaf:gender>\n      </xsl:if>\n      <bio:event>\n  <bio:Birth>\n    <bio:date><xsl:value-of select=\"@DATA-NASCIMENTO\"/></bio:date>\n    <bio:place><xsl:value-of select=\"@CIDADE-NASCIMENTO\"/></bio:place>\n    <bio:place><xsl:value-of select=\"@PAIS-DE-NASCIMENTO\"/></bio:place>\n  </bio:Birth>\n      </bio:event>\n      <foaf:name><xsl:value-of select=\"@NOME-COMPLETO\"/></foaf:name>\n      <!-- DOES NOT REALLY EXISTS IN FOAF-->\n      <foaf:citationName><xsl:value-of select=\"@NOME-EM-CITACOES-BIBLIOGRAFICAS\"/></foaf:citationName>\n      <xsl:apply-templates select=\"ENDERECO/ENDERECO-PROFISSIONAL/@E-MAIL\"/>\n      <xsl:apply-templates select=\"ENDERECO/ENDERECO-PROFISSIONAL/@HOME-PAGE\"/>\n\n      <bio:biography xml:lang=\"pt\">\n  <xsl:value-of select=\"RESUMO-CV/@TEXTO-RESUMO-CV-RH\" />\n      </bio:biography>\n      <xsl:if test=\"string-length(RESUMO-CV/@TEXTO-RESUMO-CV-RH-EN) > 0\">\n  <bio:biography xml:lang=\"en\">\n    <xsl:value-of select=\"RESUMO-CV/@TEXTO-RESUMO-CV-RH-EN\" />\n  </bio:biography>\n      </xsl:if>\n  <!-- tipoPessoa>Aluno</tipoPessoa -->\n  <!-- univOrigem>PUC-Rio</univOrigem -->\n    <foaf:member>\n      <foaf:Group rdf:about=\"PUC-RIO\">\n        <foaf:name>Pontifícia Universidade Católica do Rio de Janeiro</foaf:name>\n      </foaf:Group>\n    </foaf:member>\n    <rdf:type rdf:resource=\"&foaf;Person\" />\n    <rdf:type rdf:resource=\"&vivo;FacultyMember\" />\n\n      <xsl:apply-templates select=\"IDIOMAS\" mode=\"ref-resource\" />\n      <xsl:apply-templates select=\"AREAS-DE-ATUACAO\" mode=\"ref-resource\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"AREAS-DE-ATUACAO|IDIOMAS\" mode=\"ref-resource\">\n    <xsl:apply-templates  mode=\"ref-resource\"/>\n  </xsl:template>\n  <xsl:template match=\"AREAS-DE-ATUACAO|IDIOMAS\" />\n\n  <xsl:template match=\"AREAS-DO-CONHECIMENTO\">\n    <xsl:apply-templates />\n  </xsl:template>\n\n\n  <xsl:template match=\"IDIOMA\" mode=\"ref-resource\">\n    <doac:skill>\n      <doac:LanguageSkill>\n  <doac:language><xsl:value-of select=\"@IDIOMA\"/></doac:language>\n  <doac:language><xsl:value-of select=\"@DESCRICAO-DO-IDIOMA\"/></doac:language>\n  <doac:reads><xsl:value-of select=\"@PROFICIENCIA-DE-LEITURA\"/></doac:reads>\n  <doac:speaks><xsl:value-of select=\"@PROFICIENCIA-DE-FALA\"/></doac:speaks>\n  <doac:writes><xsl:value-of select=\"@PROFICIENCIA-DE-ESCRITA\"/></doac:writes>\n  <!-- DOES NOT REALLY EXISTS IN DOAC -->\n  <doac:comprehension><xsl:value-of select=\"@PROFICIENCIA-DE-COMPREENSAO\"/></doac:comprehension>\n      </doac:LanguageSkill>\n    </doac:skill>\n  </xsl:template>\n\n  <xsl:template match=\"AREA-DE-ATUACAO\" mode=\"ref-resource\">\n    <foaf:topic_interest>\n      <xsl:choose>\n  <xsl:when test=\"normalize-space(@NOME-DA-ESPECIALIDADE) != ''\">\n    <cnpqterms:Especialidade rdf:nodeID=\"{generate-id(@NOME-DA-ESPECIALIDADE)}\">\n      <skos:prefLabel><xsl:value-of select=\"@NOME-DA-ESPECIALIDADE\"/></skos:prefLabel>\n      <skos:related>\n        <cnpqterms:subArea rdf:nodeID=\"{generate-id(@NOME-DA-SUB-AREA-DO-CONHECIMENTO)}\">\n    <skos:prefLabel><xsl:value-of select=\"@NOME-DA-SUB-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n    <skos:broader>\n      <cnpqterms:Area rdf:nodeID=\"{generate-id(@NOME-DA-AREA-DO-CONHECIMENTO)}\">\n        <skos:prefLabel><xsl:value-of select=\"@NOME-DA-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n        <skos:broader>\n          <cnpqterms:grandeArea rdf:nodeID=\"{generate-id(@NOME-GRANDE-AREA-DO-CONHECIMENTO)}\">\n      <skos:prefLabel>\n        <xsl:value-of select=\"@NOME-GRANDE-AREA-DO-CONHECIMENTO\"/>\n      </skos:prefLabel>\n          </cnpqterms:grandeArea>\n        </skos:broader>\n      </cnpqterms:Area>\n    </skos:broader>\n        </cnpqterms:subArea>\n      </skos:related>\n    </cnpqterms:Especialidade>\n  </xsl:when>\n  <xsl:otherwise>\n    <xsl:choose>\n      <xsl:when test=\"normalize-space(@NOME-DA-SUB-AREA-DO-CONHECIMENTO) != ''\">\n        <cnpqterms:subArea rdf:nodeID=\"{generate-id(@NOME-DA-SUB-AREA-DO-CONHECIMENTO)}\">\n    <skos:prefLabel><xsl:value-of select=\"@NOME-DA-SUB-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n    <skos:broader>\n      <cnpqterms:Area rdf:nodeID=\"{generate-id(@NOME-DA-AREA-DO-CONHECIMENTO)}\">\n        <skos:prefLabel><xsl:value-of select=\"@NOME-DA-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n        <skos:broader>\n          <cnpqterms:grandeArea rdf:nodeID=\"{generate-id(@NOME-GRANDE-AREA-DO-CONHECIMENTO)}\">\n      <skos:prefLabel>\n        <xsl:value-of select=\"@NOME-GRANDE-AREA-DO-CONHECIMENTO\"/>\n      </skos:prefLabel>\n          </cnpqterms:grandeArea>\n        </skos:broader>\n      </cnpqterms:Area>\n    </skos:broader>\n        </cnpqterms:subArea>\n      </xsl:when>\n      <xsl:otherwise>\n        <cnpqterms:Area rdf:nodeID=\"{generate-id(@NOME-DA-AREA-DO-CONHECIMENTO)}\">\n    <skos:prefLabel><xsl:value-of select=\"@NOME-DA-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n    <skos:broader>\n      <cnpqterms:grandeArea rdf:nodeID=\"{generate-id(@NOME-GRANDE-AREA-DO-CONHECIMENTO)}\">\n        <skos:prefLabel>\n          <xsl:value-of select=\"@NOME-GRANDE-AREA-DO-CONHECIMENTO\"/>\n        </skos:prefLabel>\n      </cnpqterms:grandeArea>\n    </skos:broader>\n        </cnpqterms:Area>\n      </xsl:otherwise>\n    </xsl:choose>\n  </xsl:otherwise>\n      </xsl:choose>\n    </foaf:topic_interest>\n  </xsl:template>\n\n  <xsl:template match=\"AREA-DO-CONHECIMENTO-1|AREA-DO-CONHECIMENTO-2|AREA-DO-CONHECIMENTO-3\">\n    <dcterms:subject>\n      <xsl:choose>\n  <xsl:when test=\"normalize-space(@NOME-DA-ESPECIALIDADE) != ''\">\n    <cnpqterms:Especialidade rdf:nodeID=\"{generate-id(@NOME-DA-ESPECIALIDADE)}\">\n      <skos:prefLabel><xsl:value-of select=\"@NOME-DA-ESPECIALIDADE\"/></skos:prefLabel>\n      <skos:related>\n        <cnpqterms:subArea rdf:nodeID=\"{generate-id(@NOME-DA-SUB-AREA-DO-CONHECIMENTO)}\">\n    <skos:prefLabel><xsl:value-of select=\"@NOME-DA-SUB-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n    <skos:broader>\n      <cnpqterms:Area rdf:nodeID=\"{generate-id(@NOME-DA-AREA-DO-CONHECIMENTO)}\">\n        <skos:prefLabel><xsl:value-of select=\"@NOME-DA-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n        <skos:broader>\n          <cnpqterms:grandeArea rdf:nodeID=\"{generate-id(@NOME-GRANDE-AREA-DO-CONHECIMENTO)}\">\n      <skos:prefLabel>\n        <xsl:value-of select=\"@NOME-GRANDE-AREA-DO-CONHECIMENTO\"/>\n      </skos:prefLabel>\n          </cnpqterms:grandeArea>\n        </skos:broader>\n      </cnpqterms:Area>\n    </skos:broader>\n        </cnpqterms:subArea>\n      </skos:related>\n    </cnpqterms:Especialidade>\n  </xsl:when>\n  <xsl:otherwise>\n    <xsl:choose>\n      <xsl:when test=\"normalize-space(@NOME-DA-SUB-AREA-DO-CONHECIMENTO) != ''\">\n        <cnpqterms:subArea rdf:nodeID=\"{generate-id(@NOME-DA-SUB-AREA-DO-CONHECIMENTO)}\">\n    <skos:prefLabel><xsl:value-of select=\"@NOME-DA-SUB-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n    <skos:broader>\n      <cnpqterms:Area rdf:nodeID=\"{generate-id(@NOME-DA-AREA-DO-CONHECIMENTO)}\">\n        <skos:prefLabel><xsl:value-of select=\"@NOME-DA-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n        <skos:broader>\n          <cnpqterms:grandeArea rdf:nodeID=\"{generate-id(@NOME-GRANDE-AREA-DO-CONHECIMENTO)}\">\n      <skos:prefLabel>\n        <xsl:value-of select=\"@NOME-GRANDE-AREA-DO-CONHECIMENTO\"/>\n      </skos:prefLabel>\n          </cnpqterms:grandeArea>\n        </skos:broader>\n      </cnpqterms:Area>\n    </skos:broader>\n        </cnpqterms:subArea>\n      </xsl:when>\n      <xsl:otherwise>\n        <cnpqterms:Area rdf:nodeID=\"{generate-id(@NOME-DA-AREA-DO-CONHECIMENTO)}\">\n    <skos:prefLabel><xsl:value-of select=\"@NOME-DA-AREA-DO-CONHECIMENTO\"/></skos:prefLabel>\n    <skos:broader>\n      <cnpqterms:grandeArea rdf:nodeID=\"{generate-id(@NOME-GRANDE-AREA-DO-CONHECIMENTO)}\">\n        <skos:prefLabel>\n          <xsl:value-of select=\"@NOME-GRANDE-AREA-DO-CONHECIMENTO\"/>\n        </skos:prefLabel>\n      </cnpqterms:grandeArea>\n    </skos:broader>\n        </cnpqterms:Area>\n      </xsl:otherwise>\n    </xsl:choose>\n  </xsl:otherwise>\n      </xsl:choose>\n    </dcterms:subject>\n  </xsl:template>\n\n  <xsl:template match=\"TRABALHO-EM-EVENTOS/AUTORES|ARTIGO-PUBLICADO/AUTORES|ARTIGO-ACEITO-PARA-PUBLICACAO/AUTORES|\n                       LIVRO-PUBLICADO-OU-ORGANIZADO/AUTORES|CAPITULO-DE-LIVRO-PUBLICADO/AUTORES|TEXTO-EM-JORNAL-OU-REVISTA/AUTORES\">\n    <dc:creator>\n      <xsl:attribute name=\"rdf:resource\">\n        <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:attribute>\n    </dc:creator>\n  </xsl:template>\n\n  <xsl:template match=\"TRABALHO-EM-EVENTOS\">\n    <rdf:Description rdf:about=\"#P{@SEQUENCIA-PRODUCAO}\">\n      <rdf:type rdf:resource=\"&bibo;Article\" />\n      <dc:title><xsl:value-of select=\"DADOS-BASICOS-DO-TRABALHO/@TITULO-DO-TRABALHO\" /></dc:title>\n      <dcterms:issued><xsl:value-of select=\"DADOS-BASICOS-DO-TRABALHO/@ANO-DO-TRABALHO\" /></dcterms:issued>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-TRABALHO/@IDIOMA\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-TRABALHO/@HOME-PAGE-DO-TRABALHO\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-TRABALHO/@DOI\"/>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n\n      <bibo:presentedAt>\n  <rdf:Description dc:title=\"{DETALHAMENTO-DO-TRABALHO/@NOME-DO-EVENTO}\">\n    <rdf:type rdf:resource=\"&bibo;Conference\"/>\n    <event:place>\n      <rdf:Description gn:name=\"{DETALHAMENTO-DO-TRABALHO/@CIDADE-DO-EVENTO}\"\n           gn:countrycode=\"{DADOS-BASICOS-DO-TRABALHO/@PAIS-DO-EVENTO}\">\n        <rdf:type rdf:resource=\"&geo;SpatialThing\" />\n      </rdf:Description>\n    </event:place>\n  </rdf:Description>\n      </bibo:presentedAt>\n\n      <dcterms:isPartOf>\n  <rdf:Description>\n    <!-- To prevent wrong ISBN to collapse different books all books are now blank nodes -->\n    <!-- <xsl:if test=\"string-length(DETALHAMENTO-DO-TRABALHO/@ISBN)>0\"> -->\n    <!--   <xsl:attribute name=\"rdf:about\"> -->\n    <!--     <xsl:value-of select=\"concat('urn:ISBN:',translate(DETALHAMENTO-DO-TRABALHO/@ISBN,' ','-'))\"/> -->\n    <!--   </xsl:attribute> -->\n    <!-- </xsl:if> -->\n    <rdf:type rdf:resource=\"&bibo;Proceedings\"/>\n    <xsl:apply-templates select=\"DETALHAMENTO-DO-TRABALHO/@ISBN\"/>\n    <dc:title><xsl:value-of select=\"DETALHAMENTO-DO-TRABALHO/@TITULO-DOS-ANAIS-OU-PROCEEDINGS\"/></dc:title>\n    <dcterms:issued><xsl:value-of select=\"DADOS-BASICOS-DO-TRABALHO/@ANO-DO-TRABALHO\"/></dcterms:issued>\n    <xsl:if test=\"string-length(DETALHAMENTO-DO-TRABALHO/@NOME-DA-EDITORA)>0\">\n      <dcterms:publisher>\n        <foaf:Organization foaf:name=\"{DETALHAMENTO-DO-TRABALHO/@NOME-DA-EDITORA}\" />\n      </dcterms:publisher>\n    </xsl:if>\n  </rdf:Description>\n      </dcterms:isPartOf>\n\n      <xsl:apply-templates select=\"AUTORES\" />\n      <bibo:authorList rdf:parseType=\"Collection\">\n  <xsl:for-each select=\"AUTORES\">\n    <xsl:sort data-type=\"number\" select=\"@ORDEM-DE-AUTORIA\"/>\n    <rdf:Description>\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:attribute>\n    </rdf:Description>\n  </xsl:for-each>\n      </bibo:authorList>\n\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"DETALHAMENTO-DO-ARTIGO\">\n    <dcterms:isPartOf>\n      <rdf:Description>\n  <!-- to prevent wrong ISSN to collapse different journals, all journals are now blank nodes -->\n  <!-- <xsl:if test=\"string-length(@ISSN)>0\"> -->\n  <!--   <xsl:attribute name=\"rdf:about\"> <xsl:value-of select=\"concat('urn:ISSN:',translate(@ISSN,' ','-'))\"/> </xsl:attribute> -->\n  <!-- </xsl:if> -->\n  <rdf:type rdf:resource=\"&bibo;Journal\" />\n  <xsl:apply-templates select=\"@ISSN\"/>\n  <dc:title> <xsl:value-of select=\"@TITULO-DO-PERIODICO-OU-REVISTA\"/> </dc:title>\n      </rdf:Description>\n    </dcterms:isPartOf>\n    <xsl:if test=\"normalize-space(@PAGINA-INICIAL) != ''\">\n      <bibo:pageStart><xsl:value-of select=\"@PAGINA-INICIAL\"/></bibo:pageStart>\n    </xsl:if>\n    <xsl:if test=\"normalize-space(@PAGINA-FINAL) != ''\">\n      <bibo:pageEnd><xsl:value-of select=\"@PAGINA-FINAL\"/></bibo:pageEnd>\n    </xsl:if>\n    <xsl:if test=\"string-length(@VOLUME)>0\">\n      <bibo:volume> <xsl:value-of select=\"@VOLUME\"/> </bibo:volume>\n    </xsl:if>\n  </xsl:template>\n\n\n  <xsl:template match=\"DETALHAMENTO-DO-TEXTO\">\n    <dcterms:isPartOf>\n      <rdf:Description>\n  <!-- <xsl:if test=\"string-length(@ISSN)>0\"> -->\n  <!--   <xsl:attribute name=\"rdf:about\"> <xsl:value-of select=\"concat('urn:ISSN:',translate(@ISSN,' ','-'))\"/> </xsl:attribute> -->\n  <!-- </xsl:if> -->\n  <xsl:apply-templates select=\"@ISSN\"/>\n  <rdf:type rdf:resource=\"&bibo;Periodical\" />\n  <dc:title> <xsl:value-of select=\"@TITULO-DO-JORNAL-OU-REVISTA\"/> </dc:title>\n      </rdf:Description>\n    </dcterms:isPartOf>\n    <xsl:if test=\"normalize-space(@PAGINA-INICIAL) != ''\">\n      <bibo:pageStart><xsl:value-of select=\"@PAGINA-INICIAL\"/></bibo:pageStart>\n    </xsl:if>\n    <xsl:if test=\"normalize-space(@PAGINA-FINAL) != ''\">\n      <bibo:pageEnd><xsl:value-of select=\"@PAGINA-FINAL\"/></bibo:pageEnd>\n    </xsl:if>\n    <xsl:if test=\"string-length(@VOLUME)>0\">\n      <bibo:volume> <xsl:value-of select=\"@VOLUME\"/> </bibo:volume>\n    </xsl:if>\n  </xsl:template>\n\n\n  <xsl:template match=\"TEXTO-EM-JORNAL-OU-REVISTA\">\n    <rdf:Description rdf:about=\"#P{@SEQUENCIA-PRODUCAO}\">\n      <rdf:type rdf:resource=\"&bibo;Article\" />\n      <dc:title xml:lang=\"pt\"><xsl:value-of select=\"DADOS-BASICOS-DO-TEXTO/@TITULO-DO-TEXTO\" /></dc:title>\n      <xsl:if test=\"normalize-space(@TITULO-DO-TEXTO-INGLES) != ''\">\n  <dc:title xml:lang=\"en\"><xsl:value-of select=\"DADOS-BASICOS-DO-TEXTO/@TITULO-DO-TEXTO-INGLES\" /></dc:title>\n      </xsl:if>\n      <dcterms:issued><xsl:value-of select=\"DADOS-BASICOS-DO-TEXTO/@ANO-DO-TEXTO\" /></dcterms:issued>\n      <xsl:if test=\"normalize-space(DETALHAMENTO-DO-TEXTO/@DATA-DE-PUBLICACAO) != ''\">\n  <dcterms:issued><xsl:value-of select=\"DETALHAMENTO-DO-TEXTO/@DATA-DE-PUBLICACAO\"/></dcterms:issued>\n      </xsl:if>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-TEXTO/@IDIOMA\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-TEXTO/@HOME-PAGE-DO-TRABALHO\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-TEXTO/@DOI\"/>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n      <xsl:apply-templates select=\"AUTORES|DETALHAMENTO-DO-TEXTO\" />\n\n      <bibo:authorList rdf:parseType=\"Collection\">\n  <xsl:for-each select=\"AUTORES\">\n    <xsl:sort data-type=\"number\" select=\"@ORDEM-DE-AUTORIA\"/>\n    <rdf:Description>\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:attribute>\n    </rdf:Description>\n  </xsl:for-each>\n      </bibo:authorList>\n\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"ARTIGO-PUBLICADO|ARTIGO-ACEITO-PARA-PUBLICACAO\">\n    <rdf:Description rdf:about=\"#P{@SEQUENCIA-PRODUCAO}\">\n      <rdf:type rdf:resource=\"&bibo;Article\" />\n\n      <dc:title><xsl:value-of select=\"DADOS-BASICOS-DO-ARTIGO/@TITULO-DO-ARTIGO\" /></dc:title>\n      <xsl:if test=\"normalize-space(DADOS-BASICOS-DO-ARTIGO/@TITULO-DO-ARTIGO-INGLES) != ''\">\n  <dc:title xml:lang=\"en\"><xsl:value-of select=\"DADOS-BASICOS-DO-ARTIGO/@TITULO-DO-ARTIGO-INGLES\" /></dc:title>\n      </xsl:if>\n\n      <dcterms:issued><xsl:value-of select=\"DADOS-BASICOS-DO-ARTIGO/@ANO-DO-ARTIGO\" /></dcterms:issued>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-ARTIGO/@IDIOMA\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-ARTIGO/@HOME-PAGE-DO-TRABALHO\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-ARTIGO/@DOI\"/>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n\n      <xsl:apply-templates select=\"AUTORES|DETALHAMENTO-DO-ARTIGO\" />\n      <bibo:authorList rdf:parseType=\"Collection\">\n  <xsl:for-each select=\"AUTORES\">\n    <xsl:sort data-type=\"number\" select=\"@ORDEM-DE-AUTORIA\"/>\n    <rdf:Description>\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:attribute>\n    </rdf:Description>\n  </xsl:for-each>\n      </bibo:authorList>\n\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"LIVRO-PUBLICADO-OU-ORGANIZADO\">\n    <rdf:Description rdf:about=\"#P{@SEQUENCIA-PRODUCAO}\">\n      <rdf:type rdf:resource=\"&bibo;Book\" />\n      <dc:title> <xsl:value-of select=\"DADOS-BASICOS-DO-LIVRO/@TITULO-DO-LIVRO\" /> </dc:title>\n      <dcterms:issued>  <xsl:value-of select=\"DADOS-BASICOS-DO-LIVRO/@ANO\" /> </dcterms:issued>\n      <xsl:if test=\"string-length(DETALHAMENTO-DO-LIVRO/@NOME-DA-EDITORA)>0\">\n      <dcterms:publisher rdf:parseType=\"Resource\">\n    <rdf:type rdf:resource=\"&foaf;Organization\" />\n    <foaf:name><xsl:value-of select=\"DETALHAMENTO-DO-LIVRO/@NOME-DA-EDITORA\" /></foaf:name>\n      </dcterms:publisher>\n      </xsl:if>\n      <xsl:apply-templates select=\"AUTORES\" />\n      <bibo:authorList rdf:parseType=\"Collection\">\n  <xsl:for-each select=\"AUTORES\">\n    <xsl:sort data-type=\"number\" select=\"@ORDEM-DE-AUTORIA\"/>\n    <rdf:Description>\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:attribute>\n    </rdf:Description>\n  </xsl:for-each>\n      </bibo:authorList>\n\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-LIVRO/@IDIOMA\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-LIVRO/@DOI\"/>\n      <xsl:apply-templates select=\"DETALHAMENTO-DO-LIVRO/@ISBN\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-LIVRO/@HOME-PAGE-DO-TRABALHO\"/>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"DETALHAMENTO-DO-CAPITULO\">\n    <rdf:Description>\n      <!-- To prevent wrong ISBN to collapse different books all books are now blank nodes -->\n      <!-- <xsl:if test=\"string-length(@ISBN)>0\"> -->\n      <!--  <xsl:attribute name=\"rdf:about\"> <xsl:value-of select=\"concat('urn:ISBN:',translate(@ISBN,' ','-'))\"/> </xsl:attribute> -->\n      <!-- </xsl:if>  -->\n      <rdf:type rdf:resource=\"&bibo;Book\" />\n      <dc:title> <xsl:value-of select=\"@TITULO-DO-LIVRO\" /> </dc:title>\n      <xsl:apply-templates select=\"@ISBN\"/>\n      <xsl:if test=\"string-length(@NOME-DA-EDITORA)>0\">\n  <dcterms:publisher rdf:parseType=\"Resource\">\n    <rdf:type rdf:resource=\"&foaf;Organization\" />\n    <foaf:name><xsl:value-of select=\"@NOME-DA-EDITORA\"/></foaf:name>\n  </dcterms:publisher>\n      </xsl:if>\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"CAPITULO-DE-LIVRO-PUBLICADO\">\n    <rdf:Description rdf:about=\"#P{@SEQUENCIA-PRODUCAO}\">\n      <rdf:type rdf:resource=\"&bibo;Chapter\" />\n      <dc:title> <xsl:value-of select=\"DADOS-BASICOS-DO-CAPITULO/@TITULO-DO-CAPITULO-DO-LIVRO\" /> </dc:title>\n      <dcterms:issued>  <xsl:value-of select=\"DADOS-BASICOS-DO-CAPITULO/@ANO\" /> </dcterms:issued>\n      <dcterms:isPartOf>\n  <xsl:apply-templates select=\"DETALHAMENTO-DO-CAPITULO\" />\n      </dcterms:isPartOf>\n\n      <xsl:apply-templates select=\"AUTORES\" />\n      <bibo:authorList rdf:parseType=\"Collection\">\n  <xsl:for-each select=\"AUTORES\">\n    <xsl:sort data-type=\"number\" select=\"@ORDEM-DE-AUTORIA\"/>\n    <rdf:Description>\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#author-', generate-id(.))\"/>\n      </xsl:attribute>\n    </rdf:Description>\n  </xsl:for-each>\n      </bibo:authorList>\n\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-CAPITULO/@IDIOMA\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DO-CAPITULO/@DOI\"/>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"ORIENTACOES-CONCLUIDAS-PARA-MESTRADO\">\n    <rdf:Description rdf:about=\"#P{@SEQUENCIA-PRODUCAO}\">\n      <rdf:type rdf:resource=\"&bibo;Thesis\" />\n      <dc:title><xsl:value-of select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@TITULO\" /></dc:title>\n      <bibo:degree rdf:resource=\"&bibo;degrees/ms\" />\n      <dcterms:issued><xsl:value-of select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@ANO\"/></dcterms:issued>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@HOME-PAGE\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@IDIOMA\"/>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n\n      <bibo:issuer>\n  <rdf:Description>\n    <xsl:if test=\"string-length(DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@CODIGO-INSTITUICAO)>0\">\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#I',DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@CODIGO-INSTITUICAO)\"/>\n      </xsl:attribute>\n      <foaf:identifier>\n        <xsl:value-of select=\"DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@CODIGO-INSTITUICAO\"/>\n      </foaf:identifier>\n    </xsl:if>\n    <rdf:type rdf:resource=\"&foaf;Organization\" />\n    <foaf:name><xsl:value-of select=\"DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@NOME-DA-INSTITUICAO\"/></foaf:name>\n  </rdf:Description>\n      </bibo:issuer>\n      <dc:creator>\n  <rdf:Description foaf:name=\"{DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@NOME-DO-ORIENTADO}\">\n    <xsl:if test=\"normalize-space(DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@NUMERO-ID-ORIENTADO) != ''\">\n      <foaf:identifier>\n        <xsl:value-of select=\"normalize-space(DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-MESTRADO/@NUMERO-ID-ORIENTADO)\"/>\n      </foaf:identifier>\n    </xsl:if>\n    <rdf:type rdf:resource=\"&foaf;Person\" />\n  </rdf:Description>\n      </dc:creator>\n      <dc:contributor>\n  <xsl:attribute name=\"rdf:resource\">\n    <xsl:apply-templates select=\"//DADOS-GERAIS\" mode=\"ref\" />\n  </xsl:attribute>\n      </dc:contributor>\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"MESTRADO\">\n    <rdf:Description rdf:about=\"{concat('#masterthesis',@SEQUENCIA-FORMACAO)}\">\n      <rdf:type rdf:resource=\"&bibo;Thesis\" />\n      <dc:title><xsl:value-of select=\"@TITULO-DA-DISSERTACAO-TESE\" /></dc:title>\n      <xsl:if test=\"normalize-space(@TITULO-DA-DISSERTACAO-TESE-INGLES) != ''\">\n  <dc:title xml:lang=\"en\"><xsl:value-of select=\"@TITULO-DA-DISSERTACAO-TESE-INGLES\" /></dc:title>\n      </xsl:if>\n      <bibo:degree rdf:resource=\"&bibo;degrees/ms\" />\n      <dcterms:issued><xsl:value-of select=\"@ANO-DE-OBTENCAO-DO-TITULO\"/></dcterms:issued>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n\n      <bibo:issuer>\n  <rdf:Description>\n    <xsl:if test=\"string-length(@CODIGO-INSTITUICAO)>0\">\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#I',@CODIGO-INSTITUICAO)\"/>\n      </xsl:attribute>\n      <foaf:identifier>\n        <xsl:value-of select=\"@CODIGO-INSTITUICAO\"/>\n      </foaf:identifier>\n    </xsl:if>\n    <rdf:type rdf:resource=\"&foaf;Organization\" />\n    <foaf:name><xsl:value-of select=\"@NOME-INSTITUICAO\"/></foaf:name>\n  </rdf:Description>\n      </bibo:issuer>\n      <dc:creator>\n  <xsl:attribute name=\"rdf:resource\">\n    <xsl:apply-templates select=\"//DADOS-GERAIS\" mode=\"ref\" />\n  </xsl:attribute>\n      </dc:creator>\n      <dc:contributor>\n  <rdf:Description>\n    <xsl:if test=\"normalize-space(@NUMERO-ID-ORIENTADOR) != ''\">\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#orientador-',normalize-space(@NUMERO-ID-ORIENTADOR))\"/>\n      </xsl:attribute>\n      <foaf:identifier> <xsl:value-of select=\"normalize-space(@NUMERO-ID-ORIENTADOR)\"/> </foaf:identifier>\n    </xsl:if>\n    <foaf:name> <xsl:value-of select=\"@NOME-COMPLETO-DO-ORIENTADOR\"/> </foaf:name>\n    <rdf:type rdf:resource=\"&foaf;Person\" />\n  </rdf:Description>\n      </dc:contributor>\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n\n  <xsl:template match=\"ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO\">\n    <rdf:Description rdf:about=\"#P{@SEQUENCIA-PRODUCAO}\">\n      <rdf:type rdf:resource=\"&bibo;Thesis\" />\n      <bibo:degree rdf:resource=\"&bibo;degrees/phd\" />\n      <dc:title><xsl:value-of select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@TITULO\" /></dc:title>\n      <dcterms:issued><xsl:value-of select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@ANO\" /></dcterms:issued>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@HOME-PAGE\"/>\n      <xsl:apply-templates select=\"DADOS-BASICOS-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@IDIOMA\"/>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n\n      <bibo:issuer>\n  <rdf:Description>\n    <xsl:if test=\"string-length(DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@CODIGO-INSTITUICAO)>0\">\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#I',DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@CODIGO-INSTITUICAO)\"/>\n      </xsl:attribute>\n      <foaf:identifier>\n        <xsl:value-of select=\"DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@CODIGO-INSTITUICAO\"/>\n      </foaf:identifier>\n    </xsl:if>\n    <rdf:type rdf:resource=\"&foaf;Organization\" />\n    <foaf:name><xsl:value-of select=\"DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@NOME-DA-INSTITUICAO\"/></foaf:name>\n  </rdf:Description>\n      </bibo:issuer>\n      <dc:creator>\n  <rdf:Description foaf:name=\"{DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@NOME-DO-ORIENTADO}\">\n    <xsl:if test=\"normalize-space(DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@NUMERO-ID-ORIENTADO) != ''\">\n      <foaf:identifier>\n        <xsl:value-of select=\"normalize-space(DETALHAMENTO-DE-ORIENTACOES-CONCLUIDAS-PARA-DOUTORADO/@NUMERO-ID-ORIENTADO)\"/>\n      </foaf:identifier>\n    </xsl:if>\n    <rdf:type rdf:resource=\"&foaf;Person\" />\n  </rdf:Description>\n      </dc:creator>\n      <dc:contributor>\n  <xsl:attribute name=\"rdf:resource\">\n    <xsl:apply-templates select=\"//DADOS-GERAIS\" mode=\"ref\" />\n  </xsl:attribute>\n      </dc:contributor>\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n  <xsl:template match=\"DOUTORADO\">\n    <rdf:Description rdf:about=\"{concat('#phdthesis',@SEQUENCIA-FORMACAO)}\">\n      <rdf:type rdf:resource=\"&bibo;Thesis\" />\n      <dc:title><xsl:value-of select=\"@TITULO-DA-DISSERTACAO-TESE\" /></dc:title>\n      <xsl:if test=\"normalize-space(@TITULO-DA-DISSERTACAO-TESE-INGLES) != ''\">\n  <dc:title xml:lang=\"en\"><xsl:value-of select=\"@TITULO-DA-DISSERTACAO-TESE-INGLES\" /></dc:title>\n      </xsl:if>\n      <bibo:degree rdf:resource=\"&bibo;degrees/phd\" />\n      <dcterms:issued><xsl:value-of select=\"@ANO-DE-OBTENCAO-DO-TITULO\"/></dcterms:issued>\n      <xsl:apply-templates select=\"AREAS-DO-CONHECIMENTO\"/>\n\n      <bibo:issuer>\n  <rdf:Description>\n    <xsl:if test=\"string-length(@CODIGO-INSTITUICAO)>0\">\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#I',@CODIGO-INSTITUICAO)\"/>\n      </xsl:attribute>\n      <foaf:identifier>\n        <xsl:value-of select=\"@CODIGO-INSTITUICAO\"/>\n      </foaf:identifier>\n    </xsl:if>\n    <rdf:type rdf:resource=\"&foaf;Organization\" />\n    <foaf:name><xsl:value-of select=\"@NOME-INSTITUICAO\"/></foaf:name>\n  </rdf:Description>\n      </bibo:issuer>\n      <dc:creator>\n  <xsl:attribute name=\"rdf:resource\">\n    <xsl:apply-templates select=\"//DADOS-GERAIS\" mode=\"ref\" />\n  </xsl:attribute>\n      </dc:creator>\n      <dc:contributor>\n  <rdf:Description>\n    <xsl:if test=\"normalize-space(@NUMERO-ID-ORIENTADOR) != ''\">\n      <xsl:attribute name=\"rdf:about\">\n        <xsl:value-of select=\"concat('#orientador-',normalize-space(@NUMERO-ID-ORIENTADOR))\"/>\n      </xsl:attribute>\n      <foaf:identifier> <xsl:value-of select=\"normalize-space(@NUMERO-ID-ORIENTADOR)\"/> </foaf:identifier>\n    </xsl:if>\n    <foaf:name> <xsl:value-of select=\"@NOME-COMPLETO-DO-ORIENTADOR\"/> </foaf:name>\n    <rdf:type rdf:resource=\"&foaf;Person\" />\n  </rdf:Description>\n      </dc:contributor>\n      <dcterms:isReferencedBy rdf:resource=\"\" />\n    </rdf:Description>\n  </xsl:template>\n\n\n  <xsl:template match=\"@HOME-PAGE|@HOME-PAGE-DO-TRABALHO\">\n    <xsl:if test=\"normalize-space(.) != ''\">\n      <foaf:homepage><xsl:value-of select=\".\"/></foaf:homepage>\n    </xsl:if>\n  </xsl:template>\n\n  <xsl:template match=\"@E-MAIL\">\n    <xsl:if test=\"normalize-space(.) != ''\">\n      <foaf:mbox><xsl:value-of select=\".\"/></foaf:mbox>\n    </xsl:if>\n  </xsl:template>\n\n  <xsl:template match=\"@DOI\">\n    <xsl:if test=\"normalize-space(.) != ''\">\n      <bibo:doi><xsl:value-of select=\".\"/></bibo:doi>\n    </xsl:if>\n  </xsl:template>\n\n  <xsl:template match=\"@ISBN\">\n    <xsl:if test=\"normalize-space(.) != ''\">\n      <bibo:isbn><xsl:value-of select=\".\"/></bibo:isbn>\n    </xsl:if>\n  </xsl:template>\n\n  <xsl:template match=\"@ISSN\">\n    <xsl:if test=\"normalize-space(.) != ''\">\n      <bibo:issn><xsl:value-of select=\".\"/></bibo:issn>\n    </xsl:if>\n  </xsl:template>\n\n  <xsl:template match=\"@IDIOMA\">\n    <xsl:if test=\"normalize-space(.) != ''\">\n      <dc:language><xsl:value-of select=\".\"/></dc:language>\n    </xsl:if>\n  </xsl:template>\n\n  <xsl:template match=\"text()|@*|node()\" priority=\"-1\">\n  </xsl:template>\n\n</xsl:stylesheet>"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#templateControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#threads" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#threadsControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583961858990/graph/12"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/5/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/e-filesFromLocal#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/e-filesFromLocal#path" : [ {
+      "@value" : "/home/cloud-di/lattes-data/input"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/e-filesFromLocal#pathControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583961858990/graph/14"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583961858990/3/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/l-filesToLocal#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/l-filesToLocal#path" : [ {
+      "@value" : "/home/cloud-di/lattes-data/output"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/l-filesToLocal#pathControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583961858990/graph/16"
+} ]

@@ -1,0 +1,357 @@
+[ {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608",
+    "@type" : [ "http://linkedpipes.com/ontology/Pipeline" ],
+    "http://etl.linkedpipes.com/ontology/version" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#int",
+      "@value" : "2"
+    } ],
+    "http://linkedpipes.com/ontology/profile" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/2"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#note" : [ {
+      "@value" : "Converter CV Lattes em XML para RDF com script genérico"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "DSV - Converter CV Lattes [UC4] - xml2rdf3.xsl"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/2",
+    "@type" : [ "http://linkedpipes.com/ontology/ExecutionProfile" ],
+    "http://linkedpipes.com/ontology/rdfRepositoryPolicy" : [ {
+      "@id" : "http://linkedpipes.com/ontology/repository/SingleRepository"
+    } ],
+    "http://linkedpipes.com/ontology/rdfRepositoryType" : [ {
+      "@id" : "http://linkedpipes.com/ontology/repository/NativeStore"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/3",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/9"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/l-filesToLocal/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1590"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "19"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Gravar arquivo na pasta /home/cloud-di/lattes-data/"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files to local"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/4",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/10"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-xslt/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1166"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "12"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Aplicar xml2rdf3.xsl para gerar RDF"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "XSLT transformer"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/5",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/11"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/e-filesFromLocal/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "533"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "28"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Leitura dos arquivos da pasta /home/cloud-di/lattes-data"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files from local"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/b3fd-85ba",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/b3fd-85ba/configuration"
+    } ],
+    "http://linkedpipes.com/ontology/disabled" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "true"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-filesToRdfGraph/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "601"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "402"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files to RDF single graph"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/d6f5-9d83",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/d6f5-9d83/configuration"
+    } ],
+    "http://linkedpipes.com/ontology/disabled" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "true"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-rdfToFile/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "905"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "497"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Converter dados RDF em um arquivo"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "RDF to file"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/f83c-b0b5",
+    "@type" : [ "http://linkedpipes.com/ontology/Component" ],
+    "http://linkedpipes.com/ontology/configurationGraph" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/f83c-b0b5/configuration"
+    } ],
+    "http://linkedpipes.com/ontology/disabled" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "true"
+    } ],
+    "http://linkedpipes.com/ontology/template" : [ {
+      "@id" : "http://etl.linkedpipes.com/resources/components/t-filesFilter/0.0.0"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "614"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "276"
+    } ],
+    "http://purl.org/dc/terms/description" : [ {
+      "@value" : "Filtrar arquivos *.xml"
+    } ],
+    "http://www.w3.org/2004/02/skos/core#prefLabel" : [ {
+      "@value" : "Files filter"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/connection/008d-9779",
+    "@type" : [ "http://linkedpipes.com/ontology/Connection" ],
+    "http://linkedpipes.com/ontology/sourceBinding" : [ {
+      "@value" : "OutputRdf"
+    } ],
+    "http://linkedpipes.com/ontology/sourceComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/b3fd-85ba"
+    } ],
+    "http://linkedpipes.com/ontology/targetBinding" : [ {
+      "@value" : "InputRdf"
+    } ],
+    "http://linkedpipes.com/ontology/targetComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/d6f5-9d83"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/connection/2ac8-802e",
+    "@type" : [ "http://linkedpipes.com/ontology/Connection" ],
+    "http://linkedpipes.com/ontology/sourceBinding" : [ {
+      "@value" : "FilesOutput"
+    } ],
+    "http://linkedpipes.com/ontology/sourceComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/4"
+    } ],
+    "http://linkedpipes.com/ontology/targetBinding" : [ {
+      "@value" : "FilesInput"
+    } ],
+    "http://linkedpipes.com/ontology/targetComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/3"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/connection/77fb-980a",
+    "@type" : [ "http://linkedpipes.com/ontology/Connection" ],
+    "http://linkedpipes.com/ontology/sourceBinding" : [ {
+      "@value" : "FilesOutput"
+    } ],
+    "http://linkedpipes.com/ontology/sourceComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/5"
+    } ],
+    "http://linkedpipes.com/ontology/targetBinding" : [ {
+      "@value" : "FilesInput"
+    } ],
+    "http://linkedpipes.com/ontology/targetComponent" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/4"
+    } ],
+    "http://linkedpipes.com/ontology/vertex" : [ {
+      "@id" : "http://localhost:8080/resources/pipelines/1583864979608/vertex/728d-938b"
+    } ]
+  }, {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/vertex/728d-938b",
+    "@type" : [ "http://linkedpipes.com/ontology/Vertex" ],
+    "http://linkedpipes.com/ontology/order" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1"
+    } ],
+    "http://linkedpipes.com/ontology/x" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1084"
+    } ],
+    "http://linkedpipes.com/ontology/y" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "53"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583864979608"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/4/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-xslt#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#extension" : [ {
+      "@value" : "rdf3"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#extensionControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#skipOnError" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "false"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#skipOnErrorControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#template" : [ {
+      "@value" : "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!-- xml2rdf3.xsl        XSLT stylesheet to transform XML into RDF/XML\n     Version             3.0  (2009-05-28)\n -->\n\n<xsl:stylesheet version=\"1.0\" xmlns:xsl=\"http://www.w3.org/1999/XSL/Transform\"\n       xmlns:rdf=\"http://www.w3.org/1999/02/22-rdf-syntax-ns#\"\n       xmlns:xs=\"http://www.w3.org/TR/2008/REC-xml-20081126#\">\n\n       <xsl:strip-space elements=\"*\"/>\n       <xsl:output method=\"xml\" indent=\"yes\"/>\n\n       <xsl:param name=\"BaseURI\"><!-- Define if not completed by application-->\n              <!-- http://www.exampleURI.net/STELLA-I -->\n       </xsl:param>\n\n       <!-- Begin RDF document -->\n       <xsl:template match=\"/\">\n              <xsl:element name=\"rdf:RDF\">\n                     <rdf:Description>\n                            <xsl:attribute name=\"rdf:about\"/>\n                            <xsl:apply-templates select=\"/*|/@*\"/>\n                     </rdf:Description>\n              </xsl:element>\n       </xsl:template>\n\n       <!-- Turn XML elements into RDF triples. -->\n       <xsl:template match=\"*\">\n              <xsl:param name=\"subjectname\"/>\n\n              <!-- Build URI for subjects resources from acestors elements -->\n              <xsl:variable name=\"newsubjectname\">\n                     <xsl:if test=\"$subjectname=''\">\n                            <xsl:value-of select=\"$BaseURI\"/>\n                            <xsl:text>#</xsl:text>\n                     </xsl:if>\n                     <xsl:value-of select=\"$subjectname\"/>\n                     <xsl:value-of select=\"name()\"/>\n                     <!-- Add an ID to sibling element of identical name -->\n                     <xsl:variable name=\"number\">\n                            <xsl:number/>\n                     </xsl:variable>\n                     <xsl:if test=\"$number > 1\">\n                            <xsl:text>_</xsl:text>\n                            <xsl:number/>\n                     </xsl:if>\n              </xsl:variable>\n\n              <xsl:element name=\"{name()}\" namespace=\"{concat(namespace-uri(),'#')}\">\n                     <rdf:Description>\n                            <xsl:attribute name=\"rdf:about\">\n                                   <xsl:value-of select=\"$newsubjectname\"/>\n                            </xsl:attribute>\n                            <xsl:apply-templates select=\"@*|node()\">\n                                   <xsl:with-param name=\"subjectname\"\n                                          select=\"concat($newsubjectname,'/')\"/>\n                            </xsl:apply-templates>\n                     </rdf:Description>\n              </xsl:element>\n\n              <!-- rdf:_no triple to preserve the order of elements,\n                   comment out if not needed -->\n              <xsl:if test=\"count(../*) >1\">\n                     <xsl:element name=\"{concat('rdf:_',count(preceding-sibling::*)+1)}\">\n                            <rdf:Description>\n                                   <xsl:attribute name=\"rdf:about\">\n                                          <xsl:value-of select=\"$newsubjectname\"/>\n                                   </xsl:attribute>\n                            </rdf:Description>\n                     </xsl:element>\n              </xsl:if>\n       </xsl:template>\n\n       <!-- Create attribute triples. -->\n       <xsl:template match=\"@*\" name=\"attributes\">\n              <xsl:variable name=\"ns\">\n                     <!-- If attribute doesn't have a namespace use element namespace -->\n                     <xsl:choose>\n                            <xsl:when test=\"namespace-uri()=''\">\n                                   <xsl:value-of select=\"concat(namespace-uri(..),'#')\"/>\n                            </xsl:when>\n                            <xsl:otherwise>\n                                   <xsl:value-of select=\"concat(namespace-uri(),'#')\"/>\n                            </xsl:otherwise>\n                     </xsl:choose>\n              </xsl:variable>\n              <xsl:element name=\"{name()}\" namespace=\"{$ns}\">\n                     <xsl:value-of select=\".\"/>\n              </xsl:element>\n       </xsl:template>\n\n       <!-- Enclose text in an rdf:value element -->\n       <xsl:template match=\"text()\">\n              <xsl:element name=\"rdf:value\">\n                     <xsl:value-of select=\".\"/>\n              </xsl:element>\n       </xsl:template>\n\n       <!-- Add triple to preserve comments -->\n       <xsl:template match=\"comment()\">\n              <xsl:element name=\"xs:comment\">\n                     <xsl:value-of select=\".\"/>\n              </xsl:element>\n       </xsl:template>\n\n</xsl:stylesheet>"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#templateControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#threads" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "1"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-xslt#threadsControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583864979608/10"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/5/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/e-filesFromLocal#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/e-filesFromLocal#path" : [ {
+      "@value" : "/home/cloud-di/lattes-data/input"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/e-filesFromLocal#pathControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583864979608/11"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/3/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/l-filesToLocal#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/l-filesToLocal#path" : [ {
+      "@value" : "/home/cloud-di/lattes-data/output"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/l-filesToLocal#pathControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583864979608/9"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/b3fd-85ba/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#commitSize" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#integer",
+      "@value" : "50000"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#commitSizeControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#mimeType" : [ {
+      "@value" : "application/rdf+xml"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#mimeTypeControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#softFail" : [ {
+      "@type" : "http://www.w3.org/2001/XMLSchema#boolean",
+      "@value" : "false"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesToRdfGraph#softFailControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/b3fd-85ba/configuration"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/d6f5-9d83/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-rdfToFile#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileName" : [ {
+      "@value" : "professores.rdf"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileNameControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileType" : [ {
+      "@value" : "application/rdf+xml"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#fileTypeControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#graphUri" : [ {
+      "@id" : "http://localhost/default"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-rdfToFile#graphUriControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/d6f5-9d83/configuration"
+}, {
+  "@graph" : [ {
+    "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/f83c-b0b5/configuration",
+    "@type" : [ "http://plugins.linkedpipes.com/ontology/t-filesFilter#Configuration" ],
+    "http://plugins.linkedpipes.com/ontology/t-filesFilter#fileNamePattern" : [ {
+      "@value" : "Lattes8164403687403639.xml"
+    } ],
+    "http://plugins.linkedpipes.com/ontology/t-filesFilter#fileNamePatternControl" : [ {
+      "@id" : "http://plugins.linkedpipes.com/resource/configuration/None"
+    } ]
+  } ],
+  "@id" : "http://localhost:8080/resources/pipelines/1583864979608/component/f83c-b0b5/configuration"
+} ]

@@ -1,0 +1,23 @@
+conectar a vm
+
+abre o anaconda prompt 
+-ssh buscapuc
+colocar a senha Gesto90*Papagaio
+
+rodar o site
+
+abrir outro anaconda prompt
+-conda activate quempuc
+cd diretório do projeto
+colocar as variavies de ambiente
+	set FLASK_APP=run.py
+	set FLASK_CONFIG=development
+	set FLASK_DEBUG=1
+	set AGRAPH_HOST=localhost
+	set AGRAPH_PORT=10035
+	set AGRAPH_USER=web_app
+	set AGRAPH_PASSWORD=nima2020
+	set POSTGRES_CONNECTION=localhost:5004
+	set POSTGRES_PASSWORD=postgres
+	set USER_DATABASE=quempuc_teste
+-flask run

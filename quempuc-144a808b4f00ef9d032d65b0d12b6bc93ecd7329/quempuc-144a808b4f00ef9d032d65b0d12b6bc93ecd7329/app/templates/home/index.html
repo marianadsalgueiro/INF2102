@@ -1,0 +1,159 @@
+<!-- index.html-->
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}Quem@PUC{% endblock %}
+{% block body %}
+
+    <div>
+        <br>
+        {% include "errors/flash.html" %}
+    </div>
+    <div class="jumbotron">
+        <div class="container">
+            <h1 style="font-size:40px; text-align: center;">Bem-vindo(a) ao Quem@PUC</h1><br/>
+
+            {% if form %} {# BARRA DE PESQUISA #}
+            <form role="form" method="POST" action="/">
+                {{ form.hidden_tag() }}
+                {{ wtf.form_errors(form, hiddens="only") }}
+                <br>
+                <div class="form-group required" style="text-align:center">
+                    {{ form.busca(class_="form-control", style="width: 90%; display:inline; font-size:20px")}}
+                    <button type="submit" class="btn btn-outline-secondary" id="submit_id" style="margin-bottom:5px; border:1px solid grey; margin: 0 0 1% 0;" onclick="waiting()">Pesquisar</button>
+                </div>
+                <br>
+            </form>
+            <br>
+            <div id="loader" style="display: none">
+                <div class="progress w-25" style="margin: 0 auto;">
+                    <div class="progress-bar progress-bar-info progress-bar-striped progress-bar-animated" role="progressbar"
+                         aria-valuenow="0" aria-valuemin="0" aria-valuemax="100" style="width:0%" id="loadingbar">
+                        <span class="loadingbar-text" id="loadingbar-text"></span>
+                    </div>
+                </div>
+                <p class="center loadingbar-text" id="tempTextLoading"></p>
+              <!-- <p class="center" id="textoLoading"> Por favor, aguarde. Os dados demoram em geral 15 segundos para serem carregados.</p> -->
+              <!-- <img class="center" src='../static/images/loading.gif' alt='Carregando dados'/> -->
+            </div>
+            {% endif %}
+
+            {% if matching %} {# MATCHING DE PALAVRAS PARECIDAS #}
+            <br>
+            <p class="lead">Encontramos também este(s) termo(s) parecidos com o(s) da sua busca:
+                <ul>
+                    {% for i in matching %}
+                        <li class="lead"><a href="{{ url_for('home.didYouMean', matching = i) }}">{{ i }}</a></li>
+                    {% endfor %}
+                </ul>
+            </p>
+            <br>
+            {% endif %}
+            <div id="resultados" style="display: block">
+                {% if nomes %} {# TABELA DE NOMES #}
+                {% include "home/pesquisaNomes.html" %}
+                {% endif %}
+
+                {% if dados %} {# TABELA DE PRODUCOES GERAIS #}
+                {% include "home/pesquisaTermo.html" %}
+                {% endif %}
+            </div>
+            <br>
+        </div>
+    </div>
+
+
+
+<style>
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+</style>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
+
+<script>
+    function waiting () {
+        document.getElementById("loader").style.display = 'block';
+        document.getElementById("resultados").style.display = 'none';
+    }
+
+    let token;
+    let request = new XMLHttpRequest();
+
+    function loopWaiting() {
+        let urlLoading;
+        {% if codigo %}
+            token = {{ codigo|safe }}; urlLoading = "/?status=" + token;
+        {% else %}
+            urlLoading = "/_loading/" + token;
+        {% endif %}
+
+        $.getJSON(urlLoading, (data) => {
+            console.log(data);
+            let p = data['percent'];
+            let s = data['status'];
+
+            let loadingbar = $("#loadingbar");
+            loadingbar.attr('aria-valuenow', p).css('width', p + '%');
+            // loadingbar.text(p + "%");
+             document.getElementById("loadingbar-text").innerText = p + "%";
+            // temp:
+            document.getElementById("tempTextLoading").innerText = s;
+
+            if (p === 100) {
+                {% if dados %} window.location.href = "/about/" + token;
+                {% else %} window.location.href = "/?finalizado=" + token;
+                {% endif %}
+            }
+        });
+        setTimeout(loopWaiting, 2000);
+    };
+
+    $(document).ready(function() {
+        {% if codigo %} waiting(); setTimeout(loopWaiting, 2000); {% endif %}
+
+        {% if busca %} document.getElementById("busca").value = "{{ busca|safe }}";{% endif %}
+
+        $(document).on('shown.bs.tab', 'a[data-toggle="tab"]', function () {
+            $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
+        });
+
+        $('table.table').DataTable({
+            /*MUDA LINGUAGEM*/
+            "language": {
+                "lengthMenu": "Mostrar _MENU_ orientadores, professores e pesquisadores da PUC-Rio por página",
+                "zeroRecords": "Não encontramos nada com esse filtro",
+                "info": "Mostrando _PAGE_ de _PAGES_",
+                "infoEmpty": "",
+                "infoFiltered": "(filtrado de um total de _MAX_ autores)",
+                "paginate": {
+                    "first": "Primeiro",
+                    "last": "Último",
+                    "next": "Próximo",
+                    "previous": "Anterior",
+                    },
+                "loadingRecords": "Carregando...",
+                "search": "Filtrar:",
+                    "aria": {
+                    "sortAscending": ": Ative para ordenar a coluna de forma ascendente",
+                    "sortDescending": ": Ative para odenar a coluna de forma descendente"
+                    }
+            },
+            "order": [[ 1, "desc" ]]
+        });
+    });
+
+    if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+    }
+
+    $(document).ready(function(){
+        $('[data-toggle="tooltip"]').tooltip();
+    });
+
+</script>
+
+{% endblock %}
+
+

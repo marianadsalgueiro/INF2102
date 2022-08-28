@@ -1,0 +1,22 @@
+<!-- sobre.html-->
+{% import "bootstrap/wtf.html" as wtf %}
+{% extends "base.html" %}
+{% block title %}Sobre{% endblock %}
+{% block body %}
+
+<div class="container">
+    <div class="jumbotron">
+        <div class="container" id="sobre"> 
+            <h1>O que é o Quem@PUC?</h1>
+            <br>
+            <p>Trata-se de um Sistema de Recuperação de Informações (information retrieval) que funciona como um site de buscas na web tradicional, porém contemplando apenas as produções relativas aos membros da comunidade PUC-Rio. A ideia é permitir identificar projetos de pesquisa e/ou desenvolvimento e as competências existentes em laboratórios e departamentos da PUC-Rio, coordenados por integrantes do quadro de professores-pesquisadores.</p>
+            <p>Nesta primeira versão o Quem@PUC faz buscas de <i>matching</i> exato com a(s) palavra(s) buscada(s), ou seja, retornamos as produções de professores que contenham <b>exatamente</b> a(s) palavra(s) buscada(s). Futuramente buscas estendidas e com extensões semânticas serão disponibilizadas em novas versões.</p>
+            <p>Em termos de tecnologias envolvidas, utilizamos o sistema de bancos de dados NoSQL (RDF + grafo) <a href="https://allegrograph.com/" target="_tab">AllegroGraph</a>, integrada com o microframework <a href="https://flask.palletsprojects.com/en/1.1.x/" target="_tab">Flask</a> e a linguagem <a href="https://www.python.org/" target="_tab">Python</a>. A ferramenta não exige autenticação de seus usuários e pode ser acessada livremente em qualquer lugar do mundo, bastando ter acesso à internet. Para maiores detalhes técnicos, acessar o <a href="../static/PIBIC - NIMA - resumoanual.pdf" target="_tab">Relatório PIBIC 2020</a> da aluna Mariana Salgueiro (Ciência da Computação, PUC-Rio).</p>
+            <br>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+

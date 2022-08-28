@@ -1,0 +1,28 @@
+{% import "bootstrap/wtf.html" as wtf %}
+{% import "bootstrap/utils.html" as utils %}
+{% extends "base.html" %}
+
+{% block body %}
+<br>
+<div class="container">
+    {# include "errors/flash.html" #}
+    {{ utils.flashed_messages() }}
+    <div class="jumbotron">
+        <div style="width: 50%; margin: 0 auto;">
+            <h3>Esqueci minha senha</h3>
+            <br>
+            <form name="form-register" action="" method="post" class="form" role="form">
+                {{ form.csrf_token() }}
+                <div>
+                    {{ wtf.form_field(form.email)}}
+                </div>
+                <br>
+                <div style="text-align: center;">
+                    {{ form.submit(class_="btn btn-secondary")}}
+                </div>
+            </form>
+            <br>
+        </div>
+    </div>
+</div>
+{% endblock %}

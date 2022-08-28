@@ -1,0 +1,15 @@
+<!-- base.html -->
+{% extends "base.html" %}
+
+  {% block body %}
+    <div class="container">
+      <div class="jumbotron">      
+        <h1>Quem@Puc</h1>
+        <br><p class="lead">Desculpe mas aconteceu um erro durante a pesquisa. Por favor tente de novo mais tarde. </p><br>
+        <a style="text-align: center;" class="nav-link" href="{{ url_for('home.index') }}"><button type="button" class="btn btn-outline-secondary" style="width: 15%;">Home <i class="fas fa-home"></i></button></a>
+		    <br>
+        <hr>
+        <br>
+      </div>
+    </div>
+  {% endblock %}

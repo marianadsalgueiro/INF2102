@@ -1,0 +1,92 @@
+<!-- base.html -->
+
+<!DOCTYPE html>
+<html lang="pt">
+  <head>
+    <title>Quem@PUC</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/r-2.2.5/sp-1.1.1/datatables.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script src="https://cdn.datatables.net/plug-ins/1.10.11/sorting/date-eu.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.3.1/dt-1.10.21/r-2.2.5/sp-1.1.1/datatables.min.css"/>
+
+    <!-- Icones -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Icones -->
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+    <!-- iconify -->
+    <script src="https://code.iconify.design/1/1.0.7/iconify.min.js"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-170945045-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-170945045-1');
+    </script>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-light">
+      <a href="/" class="navbar-brand">
+        <strong style="color: #093d63">Quem@PUC</strong>
+      </a>
+      <a href="https://www.puc-rio.br/"><img src="../../static/images/puc-rio-logo.png" width="40"></a>
+      <a href="https://www.ctc.puc-rio.br/"><img src="../../static/images/logo_CTC_final.png" width="180"></a>
+
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="nav nav-pills ml-auto">
+          <li class="nav-item" style="padding-right: 5px">
+            <a class="nav-link" href="{{ url_for('home.index') }}" style="font-weight: 600">Buscar</a>
+          </li>
+          <li class="nav-item" style="padding-right: 5px">
+            <a class="nav-link" href="{{ url_for('home.sobre') }}" style="font-weight: 600">Sobre</a>
+          </li>
+          <li class="nav-item" style="padding-right: 5px">
+            <a class="nav-link" href="{{ url_for('home.faq') }}" style="font-weight: 600">FAQ</a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div style="border-radius: .3rem; width: 90%; padding-right: 15px; padding-left: 15px; margin-right: auto; margin-left: auto;">
+      <div class="container">
+        {% block body %}
+        {% endblock %}
+      </div>
+    </div>
+    
+    <footer class="footer">
+      <div class="container">
+        <div style="display: inline-block;">
+          <br>
+          {% set lattes = atualizacao_do_lattes() %}
+          {% set email = email_de_problemas() %}
+          
+          <p style="text-align: left;">Ficou alguma dúvida? consulte a nossa <a href="{{url_for('home.faq')}}">FAQ</a>!</p>
+          <p style="text-align: left;">Caso encontre alguma informação incorreta, por favor nos contate através de: <a href="mailto:{{ email }}">{{ email }}</a>.</p>
+          <p>Última atualização dos <a href="http://lattes.cnpq.br/" target="_blank">Currículos Lattes</a> aqui utilizados: {{ lattes.get("atual")}}.</p>
+          <p>Próxima atualização: {{ lattes.get("proximo") }}.</p>
+          <p>© 2022 BioBD PUC-Rio</p>
+        </div>
+        <div style="display: inline-block; float: right; padding-top: 4%;">
+          <a href="https://biobd.inf.puc-rio.br/"><img src="../../static/images/BioBd_LOGO_ORIGINAL.png" width="100"></a>&nbsp;
+          <a href="http://www.inf.puc-rio.br/"><img src="../../static/images/lodoDI.png" width="130"></a>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

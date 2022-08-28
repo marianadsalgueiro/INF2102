@@ -1,0 +1,50 @@
+<!-- faq.html-->
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+{% block title %}FAQ{% endblock %}
+{% block body %}
+
+    {% set lista = [] %}
+    {% do lista.append(('O que vou encontrar como resultado da busca?', 'Uma lista de professores / pesquisadores da PUC-Rio que corresponda à sua lista de palavras chaves informadas. A correspondência é feita com com base em seus perfis (biografia), publicações, disciplinas e outros itens disponíveis na base de dados.')) %}
+    {% do lista.append(('É possível realizar a busca pelo nome de um professor/pesquisador diretamente?', 'Sim é possível. Nesse caso o usuário pode informar o nome completo ou parte do nome.')) %}
+    {% do lista.append(('Quais as fontes de dados incorporadas ao sistema?', 'A fonte de dados principal é Curriculum Lattes de professores / pesquisadores. Também estão presentes algumas informações de sistemas administrativos da PUC-Rio e os dados de disciplinas extraídos do Micro Horário. Novas fontes de dados estão sendo avaliadas e serão incorporadas a medida que forem consideradas relevantes para o propósito do sistema.')) %}
+    {% do lista.append(('Como funciona a busca por palavras chaves?', 'Por padrão o sistema o sistema faz buscas de correspondência exata com a palavra informada, ou seja, retornamos os itens associados aos professores que contenham exatamente a palavra informada em seu título, descrição ou em outros elementos cujo tipo de dados seja textual. Mas nesse operação de correspondência caracteres acentuados ou em maiúscula são considerados equivalentes a caracteres não acentuados ou minúsculos.<br>Por exemplo, se usuário informar a palavra "catador" o sistema irá realizar a correspondência com elementos que contenham a palavras catador, como a publicação cujo título é "Construindo identidades: catador herói ou sobrevivente da perversa forma de catação", mas não fará correspondência com títulos de publicações que contenha a palavra catadores (plural).')) %}
+    {% do lista.append(('Como a busca se comporta quando são informadas duas ou mais palavras chaves?', 'O sistema realizada a correspondência exata com todas palavras informadas em qualquer ordem nos elementos do tipo texto de cada item, ou seja, o operador lógico para realização do matching é o AND.<br>Por exemplo, se usuário informar as palavras "web" "semantica" a correspondência identificará publicações como "Interoperabilidade Semântica na Web: Uma Estratégia para o Alinhamento Taxonômico de Ontologias" e "Web Semântica: O Futuro da Internet" uma vez que ambas as palavras ocorrem nos títulos mesmo que em ordem diferente do informado.')) %}
+    {% do lista.append(('Como posso fazer buscas aproximadas em relação à grafia das palavras utilizadas?', 'Nesse caso o usuário pode fazer uso de duas opções de caracteres "coringas" (também conhecidos como wildcards). A interrogação (?) corresponde a qualquer caractere único na posição utilizada e o asterisco (*) corresponde a nenhum até muitos caracteres na posição associada.<br>Por exemplo, se usuário informar a expressão "catador*", o sistema poderá realizar a correspondência de elementos que contenham tanto a palavra catador quanto catadores (plural). Nesse caso os autores das publicações de título "Construindo identidades: catador herói ou sobrevivente da perversa forma de catação" e "De catadores de lixo a agentes ambientais: o processo" serão recuperados.<br>Em outro exemplo, se o usuário informar a expressão "menin?", o sistema realizará a correspondência com elementos que contenham tanto a palavra menino quanto menina como no título das publicações "Deixando de ser o Menino do Lixão: Cuidados em Família Acolhedora" e "Infância , adolescência e pobreza na década de 80 : a situação da menina".')) %}
+    {% do lista.append(('O sistema faz algum registro das consultas realizadas pelos usuários?', 'Sim. Todas as consultas são registradas em um log. Esse registro é feito única e exclusivamente para fins estatísticos de acompanhamento do uso da ferramenta e não contém informações que identifiquem o usuário.')) %}
+    {% do lista.append(('Como esses dados estão armazenados?', 'Os dados se encontram armazenados em um Banco de Dados de Grafo, do tipo TripleStore, chamado AllegroGraph. Os dados, antes de serem carregados, passam por um processo de triplificação para serem convertidos para o padrão RDF (Resource Description Framework).<br>Link para o site -> <a href="https://franz.com/agraph/support/documentation/current/">https://franz.com/agraph/support/documentation/current/</a>')) %}
+
+
+{% do lista.append(('Qual tecnologia é usada para realizar as buscas?', 'A busca é suportada por <i>AllegroGraph Freetext Indexing</i> e operadores magic properties usados em consultas na linguagem SPARQL.<br>Link para o site -> <a href="https://franz.com/agraph/support/documentation/7.0.0/text-index.html">https://franz.com/agraph/support/documentation/7.0.0/text-index.html</a>')) %}
+
+<div class="container">
+    <div class="jumbotron">
+        {# https://getbootstrap.com/docs/4.6/components/collapse/ #}
+        <div class="accordion" id="acordeaoFAQ">
+
+        {% for i in range(lista|length) %}
+            {% set titulo = lista[i][0] %}
+            {% set conteudo = lista[i][1] %}
+            <div class="card">
+                <div class="card-header" id="heading{{ i }}">
+                    <h2 class="mb-0">
+                        <button class="btn btn-block faq-pergunta" type="button" data-toggle="collapse" data-target="#collapse{{ i }}" aria-expanded="true" aria-controls="collapse{{ i }}">
+                            {{ titulo|safe }}
+                            <br/>
+                        </button>
+                    </h2>
+                </div>
+                <div id="collapse{{ i }}" class="collapse" aria-labelledby="heading{{ i }}" data-parent="#acordeaoFAQ">
+                    <div class="card-body">
+                        <p class="faq-texto">
+                        {{ conteudo|safe }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

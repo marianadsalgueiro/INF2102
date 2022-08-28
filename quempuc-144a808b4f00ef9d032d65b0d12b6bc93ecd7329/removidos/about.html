@@ -1,0 +1,292 @@
+<!-- about.html-->
+
+{% extends "base.html" %}
+{% block title %}About{% endblock %}
+{% block body %}
+
+<script>$(document).ready(function() {
+		$('[data-toggle="tooltip"]').tooltip();
+	});</script>
+
+
+<style>
+.nav-pills-custom .nav-link {
+    color: #808080;
+    background: #bababa;
+    position: relative;
+}
+
+.nav-pills-custom .nav-link.active {
+    color: #000000;
+    background: #E4E6EB;
+}
+
+
+/* Add indicator arrow for the active tab */
+@media (min-width: 992px) {
+    .nav-pills-custom .nav-link::before {
+        content: '';
+        display: block;
+        border-top: 8px solid transparent;
+        border-left: 10px solid #E4E6EB;
+        border-bottom: 8px solid transparent;
+        position: absolute;
+        top: 50%;
+        right: -10px;
+        transform: translateY(-50%);
+        opacity: 0;
+        
+    }
+}
+
+.nav-pills-custom .nav-link.active::before {
+    opacity: 1;
+}
+
+{% set qArtigos = dados.get('artigos', [])|length %}
+{% set qLivros = dados.get('livros', [])|length %}
+{% set qCapitulos = dados.get('capitulos', [])|length %}
+{% set qTeses = dados.get('teses', [])|length %}
+{% set qARrtigos = dados.get('artigos', [])|length %}
+{% set qDisciplinas = dados.get('lista_disciplinas', [])|length %}
+
+
+</style>
+<br>
+{% if flagNome == 0 %}<h4 style="text-align:center">Termo pesquisado: <em>'{{ busca }}'</em></h4>{% endif %}
+<h3 style="text-align:center"><b>{{ pessoa.upper() }}</b></h3>
+<br>
+</div> <!-- fecha a div com class="container no base.html-->
+<div class="container-fluid">
+	<div class="row">
+		<div class="col-md-2">
+			<!-- Tabs nav -->
+			<div class="nav flex-column nav-pills nav-pills-custom" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+				<a class="nav-link mb-3 p-3 shadow" id="v-pills-biografia-tab" data-toggle="pill" href="#biografias" role="tab" aria-controls="v-pills-biografia" aria-selected="false">
+					<span class="font-weight-bold small text-uppercase">Biografia</span></a>
+
+				<a class="nav-link mb-3 p-3 shadow" id="v-pills-artigos-tab" data-toggle="pill" href="#artigos" role="tab" aria-controls="v-pills-artigos" aria-selected="true">
+					<span class="font-weight-bold small text-uppercase">Artigos</span>
+                    {% if flagNome == 0 %}<span class="fa-stack"><i class="fas fa-circle fa-stack-2x com-conteudo"></i><strong class="fa-stack-1x">{{ qArtigos }}</strong></span>{% endif %}
+                </a>
+
+				<a class="nav-link mb-3 p-3 shadow" id="v-pills-livros-tab" data-toggle="pill" href="#livros" role="tab" aria-controls="v-pills-livros" aria-selected="false">
+					<span class="font-weight-bold small text-uppercase">Livros</span>
+                    {% if flagNome == 0 %}<span class="fa-stack"><i class="fas fa-circle fa-stack-2x com-conteudo"></i><strong class="fa-stack-1x">{{ qLivros }}</strong></span>{% endif %}
+                </a>
+
+				<a class="nav-link mb-3 p-3 shadow" id="v-pills-capitulos-tab" data-toggle="pill" href="#capitulos" role="tab" aria-controls="v-pills-capitulos" aria-selected="false">
+					<span class="font-weight-bold small text-uppercase">Capítulos</span>
+                    {% if flagNome == 0 %}<span class="fa-stack"><i class="fas fa-circle fa-stack-2x com-conteudo"></i><strong class="fa-stack-1x">{{ qCapitulos }}</strong></span>{% endif %}
+                </a>
+					
+				<a class="nav-link mb-3 p-3 shadow" id="v-pills-settings-tab" data-toggle="pill" href="#teses" role="tab" aria-controls="v-pills-orientacao" aria-selected="false">
+					<span class="font-weight-bold small text-uppercase">Orientações</span>
+                    {% if flagNome == 0 %}<span class="fa-stack"><i class="fas fa-circle fa-stack-2x com-conteudo"></i><strong class="fa-stack-1x">{{ qTeses }}</strong></span>{% endif %}
+                </a>
+					
+				<a class="nav-link mb-3 p-3 shadow" id="v-pills-disciplinas-tab" data-toggle="pill" href="#disciplinas" role="tab" aria-controls="v-pills-disciplinas" aria-selected="false">
+					<span class="font-weight-bold small text-uppercase">Disciplinas</span>
+                    {% if flagNome == 0 %}<span class="fa-stack"><i class="fas fa-circle fa-stack-2x com-conteudo"></i><strong class="fa-stack-1x">{{ qDisciplinas }}</strong></span>{% endif %}
+                </a>
+					
+			</div>
+		</div>
+		<div class="col-md-9">
+			<!-- Tabs content -->
+			<div class="tab-content" id="v-pills-tabContent">
+				<div class="tab-pane fade shadow rounded bg-white show p-5" id="biografias" role="tabpanel" aria-labelledby="v-pills-biografia-tab">
+					{% if dados.get('biography') %}
+					<h3><b>BIOGRAFIA</b></h3>
+					<span style="font-size: medium;">Exatamente como informado no Currículo Lattes.</span>
+					<ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+						{% if dados.get('biography')[0] %}
+							<li>{{ highlight(dados.get('biography')[0], busca)|safe }}</li><br/>
+						{% else %}
+							<li>Não informado.</li>
+						{% endif %}
+						{% if dados.get('biography')[1] %}
+							<li>{{ highlight(dados.get('biography')[1], busca)|safe }}</li>
+						{% endif %}
+					</ul>
+					{% endif %}
+
+					{% if dados.get('homepage') %}
+					<h3><b>PÁGINA PARA CONTATO</b></h3>
+					<ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+						{% set links = separar_links(dados.get('homepage')) %}
+						{% if not links %}
+							Nenhuma página de contato encontrada.
+						{% else %}
+							{% for link in links %}
+							<li><a href="{{ link }}" target="_blank">{{ link }}</a></li>
+							{% endfor %}
+						{% endif %}
+					</ul>
+					{% endif %} 
+
+					{% if dados.get('departamento') %}
+					<h3><b>DEPARTAMENTO</b></h3>
+					<ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+						{% for dadosDepartamento in dados.get('departamento') %}
+							<li>{{ dadosDepartamento }} - PUC-Rio</li>
+						{% endfor %}
+					</ul>
+					{% endif %} 
+
+					{% if dados.get('documentos') %}
+					<h3><b>DOCUMENTOS</b></h3>
+					<ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+						{% for dadosDocumento in dados.get('documentos') %}
+							<b><li>{% for autor in dados.get('documentos')[dadosDocumento] %}
+							{{autor}}, {% endfor %}</b>
+							<a target="_tab" href="http://lattes.cnpq.br/{{ idp }}">{{ dadosDocumento }}</a><br></li>
+						{% endfor %}
+					</ul>
+					{% endif %} 
+					
+				</div>
+				
+				<div class="tab-pane fade shadow rounded bg-white p-5" id="artigos" role="tabpanel" aria-labelledby="v-pills-artigos-tab">
+					<h3><b>ARTIGOS</b></h3>
+
+                    {# TAB_DICT = nome da aba no dicionario de dados #}
+                    {# TAB_SINGULAR = nome da aba no singular #}
+                    {# TAB_PLURAL = nome da aba no plural #}
+
+                    {% set TAB_DICT = 'artigos' %}
+                    {% set TAB_SINGULAR = 'artigo' %}
+					{% set TAB_PLURAL = TAB_DICT %}
+                    {% include "home/resultadoAbout.html" %}
+				</div>
+				
+				<div class="tab-pane fade shadow rounded bg-white p-5" id="livros" role="tabpanel" aria-labelledby="v-pills-livros-tab">
+					<h3><b>LIVROS</b></h3>
+                    {% set TAB_DICT = 'livros' %}
+                    {% set TAB_SINGULAR = 'livro' %}
+                    {% set TAB_PLURAL = TAB_DICT %}
+					{% include "home/resultadoAbout.html" %}
+				</div>
+				
+				<div class="tab-pane fade shadow rounded bg-white p-5" id="capitulos" role="tabpanel" aria-labelledby="v-pills-capitulos-tab">
+					<h3><b>CAPÍTULOS</b></h3>
+                    {% set TAB_DICT = 'capitulos' %}
+                    {% set TAB_SINGULAR = 'capítulo' %}
+                    {% set TAB_PLURAL = 'capítulos' %}
+					{% include "home/resultadoAbout.html" %}
+				</div>
+				
+				<div class="tab-pane fade shadow rounded bg-white p-5" id="teses" role="tabpanel" aria-labelledby="v-pills-orientacoes-tab">
+					<h3><b>ORIENTAÇÕES</b></h3>
+                    {% set TAB_DICT = 'teses' %}
+                    {% set TAB_SINGULAR = 'orientação' %}
+                    {% set TAB_PLURAL = 'orientações' %}
+                    {% set FEMININO = True %} {# quando o nome da aba eh feminino #}
+					{% include "home/resultadoAbout.html" %}
+				</div>
+				
+				
+				<div class="tab-pane fade shadow rounded bg-white p-5" id="disciplinas" role="tabpanel" aria-labelledby="v-pills-disciplinas-tab">
+					{% if flagNome == 0 %} {# QUANDO A CONSULTA FOI POR TERMO #}
+						{% if dados.get('lista_disciplinas') %}
+							<h4 style="text-align:center"><b>Disciplinas do(a) professor(a) <i data-toggle="tooltip" data-placement="top" title="Essas Informações foram retiradas do MicroHorario Puc-Rio, última atualização Abril/2021"><span class="iconify" data-icon="akar-icons:info" data-inline="false"></span></i></b></h4>
+							<p class="lead" style="font-size: 18px;">
+								<table class="dt-responsive table table-striped table-bordered" style="width:100%">
+									<thead>
+										<tr>
+											<th>CÓDIGO</th>
+											<th>NOME</th>
+											<th>DEPARTAMENTO</th>
+										</tr>
+									</thead>
+									<tbody>
+										{% for disciplina in dados.get('lista_disciplinas') %}
+										<tr>
+											<td><b><a href="https://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd={{ disciplina.get('codigo') }}">{{ highlight(disciplina.get('codigo'), busca)|safe }}</a></b></td>
+											<td><b>{{ highlight(disciplina.get('nome'), busca)|safe }}</b></td>						
+											<td><b>{{ highlight(disciplina.get('nomeDepartamento'), busca)|safe }}</b></td>
+										</tr>
+										{% endfor %}
+									</tbody>
+								</table>
+							</p>
+						{% endif %}
+					{% endif %}
+					{% if dados.get('lista_vejamaisdisciplinas') %}
+						{% if dados.get('lista_disciplinas') %}
+							<br>
+							<hr>
+							<br>
+							<br>
+						{% endif %}
+						<h4 style="text-align:center"><b>Todas as disciplinas lecionadas pelo(a) professor(a) <i data-toggle="tooltip" data-placement="top" title="Essas Informações foram retiradas do MicroHorario Puc-Rio, última atualização Abril/2021"><span class="iconify" data-icon="akar-icons:info" data-inline="false"></span></i></b></h4>
+						<p class="lead" style="font-size: 18px;">
+							<table class="dt-responsive table table-striped table-bordered" style="width:100%">
+								<thead>
+									<tr>
+										<th>CÓDIGO</th>
+										<th>NOME</th>
+										<th>DEPARTAMENTO</th>
+									</tr>
+								</thead>
+								<tbody>
+									{% for disciplina in dados.get('lista_vejamaisdisciplinas') %}
+									<tr>
+										<td><b><a href="https://www.puc-rio.br/ferramentas/ementas/ementa.aspx?cd={{ disciplina.get('codigo') }}">{{ disciplina.get('codigo') }}</a></b></td>
+										<td><b>{{ disciplina.get('nome') }}</b></td>							<td><b>{{ disciplina.get('nomeDepartamento') }}</b></td>
+									</tr>
+									{% endfor %}
+								</tbody>
+							</table>
+						</p>
+					{% else %}
+						<ul class="lead" style="font-size: 18px; padding: 20px; text-align: justify;" >
+						<p>Nenhuma disciplina sendo lecionada no período.</p>
+						</ul>
+					{% endif %}
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+    
+<br>
+<br>
+{#coloca a tab-nav de acordo com a clicada no pesquisaTermo #}
+<script>
+	$(document).ready(function(){
+		var activeTab = localStorage.getItem("activeTab");
+		$('a[href="#'+activeTab+'"]').click();
+		}
+	);
+</script>
+
+<script>
+	$(document).ready(function() {
+        $('table.table').DataTable({
+			"language": {
+				"lengthMenu": "Mostrar _MENU_ disciplinas por página",
+				"zeroRecords": "Não encontramos nada com esse filtro",
+				"info": "Mostrando _PAGE_ de _PAGES_",
+				"infoEmpty": "Não há ocorrências com esse filtro",
+				"infoFiltered": "(filtrado de um total de _MAX_ disciplinas)",
+				"paginate": {
+					"first": "Primeiro",
+					"last": "Último",
+					"next": "Próximo",
+					"previous": "Anterior",
+        			},
+        		"loadingRecords": "Carregando...",
+        		"search": "Filtrar:",
+				"aria": {
+					"sortAscending": ": Ative para ordenar a coluna de forma ascendente",
+					"sortDescending": ": Ative para odenar a coluna de forma descendente"
+				}
+			},
+            /*ORDENA POR ROLE POR DEFAULT*/
+            "order": [[ 1, "desc" ]] 
+        } );
+    } );
+
+</script>
+{% endblock %}
