@@ -44,26 +44,24 @@ def atualizacao_do_lattes():
     return lattes
 
 
-def quantidade_de_producoes_mostradas():
-    """Pega a quantidade de produções que vamos mostrar ao clicar em um professor"""
-    with open(FILE_CONFIG, 'r') as f:
-        qtdProducoes = json.load(f)['qtdProducoes']
-    return qtdProducoes
-
-
 def highlight(string, termo):
     """
-    Acha na string o termo pesquisado, e retorna uma copia da string
-    com o termo colorido atraves de html.
+    Acha na string o termo pesquisado, e retorna uma copia da string com o termo colorido atraves de html.
+    Caso nao contenha o termo, ele retorna a string original.
 
-    Caso nao contenha o termo, ele retorna a string original
+    OBS: O termo colorido sera colocado em letras maiusculas, com fundo amarelo, em ASCII.
 
-    OBS: O termo colorido sera colocado em letras maiusculas, com fundo amarelo, em ASCII
+    Parâmetros de entrada:
+        string: str
+            Texto original recuperado.
+        termo: str
+            Termo de busca.
 
-    :param string: texto original
-    :param termo: termo pesquisado
-    :return: o texto com o termo colorido
+    Parâmetros de saída:
+        string: str
+            Texto com o termo colorido.
     """
+
     import unidecode  # para converter tudo para ASCII, para o regex achar melhor
     import re
     from markupsafe import Markup
@@ -102,36 +100,24 @@ def highlight(string, termo):
     return string  # caso nao haja nenhum match
 
 
-def separar_links(binding_set: list):
+def registro_busca(string):
     """
-    Separa um binding_set contendo links, e retorna os links em uma so lista
-    
-    binding_set: [link1, link2]
+    Registra o termo buscado na pesquisa para geração de nuvem de palavras e mostrar em dashboard palavras buscadas.
+
+    Parâmetros de entrada:
+        string: str
+            Termo de busca.
+
+    Parâmetros de saída:
+        nenhum
     """
-    ret = set()
 
-    for link in binding_set:
-        links = link.split()  # separa em espacos brancos
-
-        # tentando separar em ",", ';"... para isso, verifica se tem um '.'
-        # pois a pessoa pode ter separado por "e" -> "link1 e link2 e link3"
-        # e tambem verifica se o link nap esta vazio ou so contem http://
-        links = [x for x in links if '.' in x and x and x != 'http://']
-        ret.update(links)
-
-    # transforma o set em lista, colocando http:// no inicio onde precisa
-    ret = ['http://' + x if not x.startswith('http') else x for x in ret]
-    print("LINKS DE CONTATO: ", ret)
-    return ret
-
-
-def registro_busca(string, professor):
     if request.headers.getlist('X-Forwarded-For'):
         ip = request.headers.getlist('X-Forwarded-For')[0]
     else:
         ip = request.remote_addr
 
-    busca = Busca(data_e_hora=datetime.datetime.now(), ip=ip, sistema_operacional=request.user_agent.platform, browser=request.user_agent.browser, palavra_buscada=string, professor_selecionado=professor)
+    busca = Busca(data_e_hora=datetime.datetime.now(), ip=ip, sistema_operacional=request.user_agent.platform, browser=request.user_agent.browser, palavra_buscada=string)
 
     try:
         db.session.add(busca)
@@ -142,6 +128,16 @@ def registro_busca(string, professor):
         
 
 def registro_frequencia(string):
+    """
+    Registra a frequência do termo buscado para geração de nuvem de palavras e mostrar em dashboard palavras frequentes.
+
+    Parâmetros de entrada:
+        string: str
+            Termo de busca.
+
+    Parâmetros de saída:
+        nenhum
+    """
     termo = Frequencia_Termos.query.filter_by(pk_palavra=string.lower()).first()
 
     if termo is None:
@@ -158,5 +154,13 @@ def registro_frequencia(string):
 
 
 def chaves_ordenadas(dicionario: dict) -> iter:
-    """Recebe um dicionario, e retorna um iterador sobre as chaves em ordem alfabetica decrescente"""
+    """
+    Recebe um dicionario e retorna um iterador sobre as chaves em ordem alfabetica decrescente.
+    
+    Parâmetros de entrada:
+        dicionario: dict
+
+    Parâmetros de saída:
+        iter: iter
+    """
     return iter(sorted(list(dicionario.keys()), reverse=True))

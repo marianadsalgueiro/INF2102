@@ -1,14 +1,3 @@
-DROP TABLE IF EXISTS usuario CASCADE;
-
-CREATE TABLE usuario
-(
-	pk_email varchar(60),
-    nome varchar(120) NOT NULL,
-	senha varchar(128) NOT NULL,
-	
-	CONSTRAINT usuario_pk PRIMARY KEY (pk_email)
-);
-
 DROP TABLE IF EXISTS busca CASCADE;
 
 CREATE TABLE busca
@@ -19,7 +8,6 @@ CREATE TABLE busca
     ip varchar(20),
     sistema_operacional varchar(20),
     browser varchar(20), 
-    professor_selecionado varchar(100),
 	
 	CONSTRAINT busca_pk PRIMARY KEY (pk_id)
 );
@@ -33,3 +21,17 @@ CREATE TABLE frequencia_termos
 	
 	CONSTRAINT frequencia_termos_pk PRIMARY KEY (pk_palavra)
 );
+
+DROP TABLE IF EXISTS carregamento CASCADE;
+
+CREATE TABLE carregamento
+(
+    id serial,
+    status varchar(100),
+    percent integer,
+    nome varchar(100),
+    busca varchar(100),
+    flagNome integer,
+
+    CONSTRAINT carregamento_pk PRIMARY KEY (id)
+)

@@ -6,15 +6,6 @@
     <div class="jumbotron">
       <h1>Quem@PUC</h1>
       <br><p class="lead">Nenhum resultado correspondente foi encontrado em sua pesquisa - <span style="background-color: #FFFF00">{{ busca }}</span>.</p>
-      {% if matching %}
-        <p class="lead">Por acaso, você quis dizer:
-        <ul>
-          {% for i in matching %}
-            <li class="lead"><a href="{{ url_for('home.didYouMean', matching = i) }}">{{ i }}</a></li>
-          {% endfor %}
-        </ul>
-        </p>
-      {% endif %}
       <br>
       <a style="text-align: center;" class="nav-link" href="{{ url_for('home.index') }}"><button type="button" class="btn btn-outline-secondary" style="width: 15%;">Home <i class="fas fa-home"></i></button></a>
       <br>

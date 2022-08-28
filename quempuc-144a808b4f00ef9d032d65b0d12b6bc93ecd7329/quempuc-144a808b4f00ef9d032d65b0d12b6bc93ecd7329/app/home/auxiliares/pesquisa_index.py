@@ -15,15 +15,22 @@ from json import dump
 
 def pesquisa_index(busca: str, codigo: int):
     """
-    Faz as queries para a pagina do index
-    :param busca: string buscada pelo usuario
-    :param codigo: codigo para salvar as atualizacoes no banco de dados
-        e tambem o resultado
-    :return: Dicionario no formato:
-        "nomes": lista de nomes para ser exibida na pagina
-        "dados": os outros resultados da pesquisa para serem exibidos
-        "matching": palavras parecidas
-    Caso algum erro ocorrer, será retornado uma string com o erro
+	Faz as queries no AllegroGraph para a página principal de busca.
+
+    Parâmetros de entrada:
+        busca: str
+            Termo de busca.
+        codigo: int
+            Código para salvar as atualizações no banco de dados e também o resultado.
+
+    Parâmetros de saída:
+        d: dict
+            Dicionário no formato:
+            "nomes": lista de nomes para ser exibida na página
+            "dados": os outros resultados da pesquisa para serem exibidos
+            "matching": palavras parecidas
+            
+            Caso algum erro ocorrer, será retornado uma string com o erro.
     """
 
     # iniciando o contexto para poder executar o sqlalchemy estando

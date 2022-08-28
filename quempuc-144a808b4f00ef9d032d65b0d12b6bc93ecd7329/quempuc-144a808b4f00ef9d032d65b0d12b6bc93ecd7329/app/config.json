@@ -1,10 +1,10 @@
 {
   "lattes": {
-    "atual": "jun/2022",
-    "proximo": "ago/2022"
+    "atual": "ago/2022",
+    "proximo": "set/2022"
   },
   "conexoes": [
-    "lattes-professores-jun22", "lattes-professores2-jun22", "matriculas_mai21", "cadastro_puc_etl"
+    "lattes-professores-ago22", "lattes-professores2-ago22", "matriculas_mai21", "cadastro_puc_etl"
   ],
   "repositorios": {
     "bio": "http://purl.org/vocab/bio/0.1/",

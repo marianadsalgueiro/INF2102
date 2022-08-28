@@ -11,14 +11,11 @@ import logging
 from enum import Enum
 
 from config import app_config
-from flask_login import LoginManager, current_user
 
 from .connection import connect
 
 # db variable initialization
 db = SQLAlchemy()
-
-login_manager = LoginManager()
 
 #db_allegro = connect()
 
@@ -37,6 +34,13 @@ class Namespaces(Enum):
 
 
 def get_db():
+    """
+    Cria conexão com o SQLAlchemy
+
+    :param x:
+    :return:
+    """
+
     if 'db' not in g:
         g.db = connect()
 
@@ -45,14 +49,6 @@ def get_db():
         exit(-1)
 
     return g.db
-
-
-def verifica_admin():
-    """
-    Verifica se o usuario eh admin. Se não, aborta para 403
-    """
-    if current_user is None or not current_user.admin:
-        abort(403)
 
 
 def encoded_id(x: str) -> str:
@@ -92,23 +88,16 @@ def create_app(config_name):
     from .home import home as home_blueprint
     app.register_blueprint(home_blueprint)
 
-    from .user import user as user_blueprint
-    app.register_blueprint(user_blueprint)
-
     Bootstrap(app)
 
     # highlight das palavras
     from .utils import highlight
 
     # funcoes para preencher html
-    from .utils import email_de_problemas
-    from .utils import atualizacao_do_lattes
-    from .utils import separar_links
-    from .utils import chaves_ordenadas
+    from .utils import email_de_problemas, atualizacao_do_lattes, chaves_ordenadas
 
     app.jinja_env.globals.update(encoded_id=encoded_id, decoded_id=decoded_id, highlight=highlight,
                                  email_de_problemas=email_de_problemas, atualizacao_do_lattes=atualizacao_do_lattes,
-                                 separar_links=separar_links,
                                  enumerate=enumerate,   # o jinja nao tem enumerate
                                  chaves_ordenadas=chaves_ordenadas)
     return app

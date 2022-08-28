@@ -17,7 +17,6 @@ from ..models import Carregamento
 from . import home
 from .forms import SearchForm
 from .auxiliares import functions
-from .auxiliares import pesquisa_about
 from .auxiliares import pesquisa_index
 
 # quando True, os dados enviados a pagina serao salvos em um arquivo json
@@ -33,17 +32,16 @@ PATH_PESQUISA = path.join(path.dirname(__file__), 'pesquisas', '%s.json')
 @home.route('/', methods=['GET','POST'])
 def index():
 	"""
-	Esta funcao carrega a pagina inicial da pesquisa
+	Esta função carrega a página inicial da pesquisa.
+	Se o formulário foi preenchido, ou seja, o usuário iniciou a pesquisa, será retornado um json contendo o código da pesquisa.
+	Se tiver um parâmetro "status=<int>" na url, sera retornado um json contendo o status atual da pesquisa.
+	Se tiver um parâmetro "finalizado=<int>" na url, a página final com resultados será exibida.
 
-	Se o formulario foi preenchido, ou seja, o usuario iniciou a pesquisa,
-	sera retornado um json contendo o codigo da pesquisa
+	Parâmetros de entrada:
+		Formulário enviado através de POST em browser.
 
-	Se tiver um parametro "status=<int>" na url, sera retornado um json contendo
-	os status atual da pesquisa
-
-	Se tiver um parametro "finalizado=<int>" na url, a pagina final sera exibida
-
-	:return:
+    Parâmetros de saída:
+        Renderização do template da página inicial.
 	"""
 
 	form = SearchForm()
@@ -65,7 +63,7 @@ def index():
 		thread.start()
 
 		# salva nas estatisticas
-		# registro_busca(string_buscada, None)
+		# registro_busca(string_buscada)
 		# registro_frequencia(string_buscada)
 
 		# retorna a pagina como esta, porem agora com o codigo
@@ -115,17 +113,6 @@ def index():
 
 			# retornando a pagina final
 
-			print("#############################")
-			print(artigos)
-			print(capitulos)
-			print(teses)
-			print(disciplinas)
-			print(bios)
-			print(lattes)
-			print(string_buscada)
-			print(matches)
-			print(nomes)
-
 			return render_template('home/index.html', form=form, dados=True,
 								   artigos=artigos, capitulos=capitulos, teses=teses,
 								   disciplinas=disciplinas, bios=bios, lattes=lattes,
@@ -138,71 +125,22 @@ def index():
 	# caso final, se ele ainda nao fez nada, carrega a pagina normalmente
 	return render_template("home/index.html", form=form)
 
-@home.route('/match/<string:matching>', methods=['GET','POST'])
-def didYouMean(matching):
-	form = SearchForm()
-	form.busca.data = matching
-
-	novomatching = difflib.get_close_matches(matching, termos.t, cutoff=0.6)
-
-	if matching in novomatching:
-		novomatching.remove(matching)
-
-	resultsDic = {}
-
-	registro_busca(matching, None)
-
-	functions.searchInRepository(get_db(), matching, resultsDic)
-
-	if not resultsDic:
-		logger.error('Nenhum resultado correspondente foi encontrado em sua pesquisa - %s', matching)
-		return render_template("errors/notfound.html", busca=matching, matching=novomatching)
-
-	registro_frequencia(matching)
-
-	return render_template("home/index.html", form=form, dados=resultsDic, busca=matching, ordenacao=form.ordenacao.data, matching=novomatching)
-
-
-@home.route('/about/<string:id>/<int:flagNome>', methods=['GET','POST'])
-def about(id,flagNome):
-	"""
-	View para criar a página de about do zero, sem pegar o arquivo json do banco.
-	:param id: id da pesquisa (codigo da pessoa e busca)
-	:param flagNome: flag para passar para o html
-	"""
-	# id_bdecoded = functions.decode_id(id)
-	# id_decoded = id_bdecoded.decode()
-	pessoa, busca = decoded_id(id).split('%')
-	logger.info('Pessoa escolhida - %s', pessoa)
-
-	# pesquisa os nomes
-	# resultNomes = functions.getNomes(get_db(), busca))
-	resultDic = pesquisa_about.pesquisa_about(pessoa, busca)
-
-	if DUMP:
-		with open('dump.json', 'w+') as f:
-			json.dump(resultDic, f, indent=3, skipkeys=True)
-			print("### DUMP ESTA ATIVADO ###")
-
-	if type(resultDic) == str:
-		print("Erro!: ", resultDic)
-		logger.error("Aconteceu alguma excecao na funcao about: %s", resultDic)
-		return render_template('errors/error.html')
-
-	return render_template('home/about.html', pessoa=pessoa, busca=busca,
-						   dados=resultDic, idp=resultDic['id_lattes'],
-						   flagNome=flagNome)
-
 
 @home.route('/_loading/<int:codigo>', methods=['GET'])
 def loading(codigo: int):
 	"""
-	Carrega as informacoes do loading da pesquisa.
-	Se a pesquisa foi finalizada, os dados da pesquisa serao retornados em vez disso
+	Carrega as informações do loading da pesquisa.
+	Se a pesquisa foi finalizada, os dados da pesquisa serão retornados em vez disso.
 
-	:param codigo: id da pesquisa, na tabela carregamento
-	:return: JSON contendo as informações
+	Parâmetros de entrada:
+		codigo: int 
+			Id da pesquisa na tabela de carregamento.
+
+    Parâmetros de saída:
+        ret: json
+			JSON contendo as informações.
 	"""
+
 	# puxa as informacoes
 	o = Carregamento.query.filter_by(id=codigo).first()
 
@@ -220,9 +158,27 @@ def loading(codigo: int):
 
 @home.route('/sobrenos', methods=['GET','POST'])
 def sobre():
+	"""
+	Carrega as informações da página sobre.
+
+	Parâmetros de entrada:
+		nenhum
+
+    Parâmetros de saída:
+        Renderização do template da página de sobre.
+	"""
 	return render_template("home/sobre.html")
 
 
 @home.route('/faq', methods=['GET','POST'])
 def faq():
+	"""
+	Carrega as informações da página FAQ.
+
+	Parâmetros de entrada:
+		nenhum
+
+    Parâmetros de saída:
+        Renderização do template da página de FAQ.
+	"""
 	return render_template("home/faq.html")

@@ -8,10 +8,18 @@ from ...models import Carregamento
 
 def atualiza_status(objeto: Carregamento, status: str, percent: int):
     """
-    Atualiza o objeto Carregamento com o status e porcentagem fornecida
-    :param objeto: objeto Carregamento para atualizar
-    :param status: string com o status do carregamento
-    :param percent: inteiro entre 0 a 100 contendo quanto ja foi feito da pesquisa
+    Atualiza o objeto Carregamento com o status e porcentagem fornecida.
+
+    Parâmetros de entrada:
+        objeto: Carregamento
+            objeto Carregamento para atualizar.
+        status: str
+            String com o status do carregamento.
+        percent: int
+            Inteiro entre 0 a 100 contendo quanto ja foi feito da pesquisa.
+
+    Parâmetros de saída:
+        nenhum
     """
 
     objeto.status = status

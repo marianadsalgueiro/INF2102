@@ -1,5 +1,5 @@
 from flask_login import UserMixin
-from app import db, login_manager
+from app import db
 
 
 class Busca(UserMixin, db.Model):
@@ -11,7 +11,6 @@ class Busca(UserMixin, db.Model):
     sistema_operacional = db.Column(db.String(20))
     browser = db.Column(db.String(20))
     palavra_buscada = db.Column(db.String(50))
-    professor_selecionado = db.Column(db.String(100))
 
 
 class Frequencia_Termos(UserMixin, db.Model):

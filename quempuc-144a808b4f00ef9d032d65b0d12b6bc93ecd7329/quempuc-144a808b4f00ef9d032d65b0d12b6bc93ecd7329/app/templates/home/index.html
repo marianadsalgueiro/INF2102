@@ -36,18 +36,6 @@
               <!-- <img class="center" src='../static/images/loading.gif' alt='Carregando dados'/> -->
             </div>
             {% endif %}
-
-            {% if matching %} {# MATCHING DE PALAVRAS PARECIDAS #}
-            <br>
-            <p class="lead">Encontramos também este(s) termo(s) parecidos com o(s) da sua busca:
-                <ul>
-                    {% for i in matching %}
-                        <li class="lead"><a href="{{ url_for('home.didYouMean', matching = i) }}">{{ i }}</a></li>
-                    {% endfor %}
-                </ul>
-            </p>
-            <br>
-            {% endif %}
             <div id="resultados" style="display: block">
                 {% if nomes %} {# TABELA DE NOMES #}
                 {% include "home/pesquisaNomes.html" %}
