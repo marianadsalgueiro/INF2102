@@ -27,3 +27,7 @@ Você pode parar o AllegroGraph executando:
 ```
 /home/joe/tmp/ag7.3.0/bin/agraph-control --config <caminho>/ag7.3.0/lib/agraph.cfg stop
 ```
+
+## Verificando se o AllegroGraph está executando:
+Abra um navegador e entre na URL do AllegroGraph WebView:
+http://localhost:10035
