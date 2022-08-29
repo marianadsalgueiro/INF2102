@@ -98,12 +98,12 @@ def index():
 					raise Exception("Arquivo json invalido")
 
 			# pegando os dados
-			artigos, livros, capitulos, teses, disciplinas, bios, lattes = ret['dados']
+			artigos, livros, capitulos, teses, disciplinas, bios = ret['dados']
 			nomes = ret['nomes']
 			matches = ret['matching']
 
 			# verificando se nao tem algum dado
-			if not artigos and not livros and not capitulos and not teses and not disciplinas and not bios and not lattes:
+			if not artigos and not livros and not capitulos and not teses and not disciplinas and not bios:
 				return render_template('errors/notfound.html', busca=string_buscada, matching=matches)
 
 			# removendo o objeto do banco de dados
@@ -115,8 +115,8 @@ def index():
 
 			return render_template('home/index.html', form=form, dados=True,
 								   artigos=artigos, capitulos=capitulos, teses=teses,
-								   disciplinas=disciplinas, bios=bios, lattes=lattes,
-								   busca=string_buscada, matching=matches, nomes=nomes)
+								   disciplinas=disciplinas, bios=bios, busca=string_buscada, 
+								   matching=matches, nomes=nomes)
 		except Exception as e:
 			print("Erro ao carregar a pagina index: ", str(e))
 			# flash("Erro ao carregar a sua pesquisa, tente novamente mais tarde [%s]" % str(e))

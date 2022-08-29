@@ -16,6 +16,23 @@ logger = logging.getLogger(__name__)
 
 
 def searchInRepository(repository, string_buscada, atualizar_status=None):
+    """
+    Procura nos repositórios do BD AllegroGraph o termo buscado pelo usuário e separa pelas categorias artigos, livros, capítulos, teses, disciplinas e biografias.
+    Atualiza a porcentagem de carregamento da página inicial.
+
+    Parâmetros de entrada:
+        repository: Objeto de conexão do SQLAlchemy com o Flask.
+        string_buscada: str
+        atualizar_status: int
+
+    Parâmetros de saída:
+        resultsArtigos: dict
+        resultsLivros: dict
+        resultsCapitulos: dict
+        resultsTeses: dict
+        resultsDisciplinas: dict
+        resultsBios: dict
+    """
 
     if atualizar_status is not None:
         percentual_atual = atualizar_status.percent
@@ -32,7 +49,6 @@ def searchInRepository(repository, string_buscada, atualizar_status=None):
     resultsTeses = {}
     resultsDisciplinas = {}
     resultsBios = {}
-    resultsLattes = {}
 
     try:
         artigos = threading.Thread(target=getStringBuscada, args=(repository, string_buscada, resultsArtigos, 'Article'))
@@ -41,9 +57,8 @@ def searchInRepository(repository, string_buscada, atualizar_status=None):
         teses = threading.Thread(target=getStringBuscada, args=(repository, string_buscada, resultsTeses, 'Thesis'))
         disciplinas = threading.Thread(target=getDisciplinas, args=(repository, string_buscada, resultsDisciplinas))
         bios = threading.Thread(target=getBio, args=(repository, string_buscada, resultsBios))
-        lattes = threading.Thread(target=getLattes, args=(repository, string_buscada, resultsLattes))
 
-        threads = [artigos, livros, capitulos, teses, disciplinas, bios, lattes]
+        threads = [artigos, livros, capitulos, teses, disciplinas, bios]
 
         for t in threads:
             t.start()
@@ -60,11 +75,27 @@ def searchInRepository(repository, string_buscada, atualizar_status=None):
         logger.error('Aconteceu alguma excecao ao fazer a busca nos repositorios: %s', print(traceback.format_exc()))
         return render_template("errors/error.html")
 
-    return resultsArtigos, resultsLivros, resultsCapitulos, resultsTeses, resultsDisciplinas, resultsBios, resultsLattes
+    return resultsArtigos, resultsLivros, resultsCapitulos, resultsTeses, resultsDisciplinas, resultsBios
 
 
 def getStringBuscada(repository, string_buscada, dic, tipo):
-#query da página principal que retorna professores em abas artigos/livros/teses/capitulos
+    """
+    Definição da consulta que retorna os professores encontrados com a palavra-chave buscada.
+
+    Parâmetros de entrada:
+        repository: Objeto de conexão do SQLAlchemy com o Flask.
+        string_buscada: str
+        dic: dict
+            Dicionário que vai guardar os resultados.
+        tipo: str
+            Tipo de produção encontrada: artigos, livros, capítulos, teses, disciplinas ou biografias
+        
+    Parâmetros de saída:
+        Caso sucesso, nenhum.
+        Caso erro, renderiza o template de erro e imprime a exceção.
+    """
+
+    #query da página principal que retorna professores em abas artigos/livros/teses/capitulos
     queryString = """ 
         PREFIX cad-puc: <http://www.nima.puc-rio.br/cad-puc/>
         SELECT DISTINCT ?author_name (COUNT(?%s) as ?count%s)
@@ -106,6 +137,20 @@ def getStringBuscada(repository, string_buscada, dic, tipo):
 
 
 def getDisciplinas(repository, busca, dic): #caso de Antonio Luz Furtado que nao consigo achar o idp
+    """
+    Definição da consulta que retorna os professores relacionados com as disciplinas encontradas com a palavra-chave buscada.
+
+    Parâmetros de entrada:
+        repository: Objeto de conexão do SQLAlchemy com o Flask.
+        string_buscada: str
+        dic: dict
+            Dicionário que vai guardar os resultados.
+        
+    Parâmetros de saída:
+        Caso sucesso, nenhum.
+        Caso erro, renderiza o template de erro e imprime a exceção.
+    """
+
     queryString = """
         SELECT ?instructor_name (COUNT(?course_name) AS ?nOcorrencias)
         {	
@@ -158,6 +203,20 @@ def getDisciplinas(repository, busca, dic): #caso de Antonio Luz Furtado que nao
         return render_template("errors/error.html")
 
 def getBio(repository, busca, dic):
+    """
+    Definição da consulta que retorna os professores relacionados com as biografias encontradas com a palavra-chave buscada.
+
+    Parâmetros de entrada:
+        repository: Objeto de conexão do SQLAlchemy com o Flask.
+        string_buscada: str
+        dic: dict
+            Dicionário que vai guardar os resultados.
+        
+    Parâmetros de saída:
+        Caso sucesso, nenhum.
+        Caso erro, renderiza o template de erro e imprime a exceção.
+    """
+
     queryString = """
         SELECT DISTINCT ?author_name (COUNT(?bio) as ?countBio)
         {
@@ -192,50 +251,20 @@ def getBio(repository, busca, dic):
         return render_template("errors/error.html")
 
 
-def getLattes(repository, busca, dic):
-    queryString = """
-        SELECT ?author_name (count(?author_name) as ?countCV)
-        {
-            SELECT DISTINCT ?author_name (str(?title) as ?Title)
-            WHERE
-            {
-                ?CVLattes dc:title ?title; dc:creator ?author; rdf:type ?prod_type.
-                ?author foaf:name ?author_name; foaf:member ?UnivOrigem.
-                (?s ?author_name) fti:match '%s' .
-                filter (?UnivOrigem = <http://www.nima.puc-rio.br/lattes/PUC-RIO>).
-                filter (?prod_type = <http://xmlns.com/foaf/0.1/Document>) .
-            }
-        }
-        group by ?author_name
-    """ % (busca)
-
-    try:
-        result = repository.executeTupleQuery(queryString)
-
-        for binding_set in result:
-            print(binding_set)
-            authorName = str(binding_set.getValue("author_name"))
-            authorName=authorName[1:-1] # fora os " "
-            countCV = int(str(binding_set.getValue("countCV")).replace('"^^<http://www.w3.org/2001/XMLSchema#integer>',"").strip('"')) if str(binding_set.getValue("countCV")) != 'None' else str(binding_set.getValue("countCV"))
-
-            dic.update({authorName : {
-                'countCV': countCV,
-            }})
-
-    except Exception as e:
-        print(traceback.format_exc())
-        logger.error('Aconteceu alguma excecao ao fazer a busca nos repositorios: %s' % traceback.format_exc())
-        return render_template("errors/error.html")
-
-
 def getNomes(repositorio, pesquisa: str):
     """
-    Faz uma pesquisa no repositorio buscando todos os nomes
-    que contenham o termo pesquisado no nome
+    Quem@PUC faz diferenciação entre termos buscados que são parte de nome de professores ou parte dos conteúdos das publicações.
+    Função, então, faz uma pesquisa no repositório buscando todos os nomes que contenham o termo pesquisado no nome.
 
-    :param repositorio: Repositorio do Allegro
-    :param pesquisa: termo pesquisado
-    :return: lista com os nomes
+    Parâmetros de entrada:
+        repository: Objeto de conexão do SQLAlchemy com o Flask.
+        pesquisa: str
+            Termo buscado.
+        
+    Parâmetros de saída:
+        Caso sucesso, lista_nome: str.
+            Lista com os nomes dos professores que contém o termo buscado.
+        Caso erro, renderiza o template de erro e imprime a exceção.
     """
 
     # limpando a pesquisa, e colocando * no inicio e fim

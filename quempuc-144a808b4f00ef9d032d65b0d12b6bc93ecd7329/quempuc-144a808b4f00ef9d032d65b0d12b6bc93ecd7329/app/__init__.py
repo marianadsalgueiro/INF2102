@@ -17,8 +17,6 @@ from .connection import connect
 # db variable initialization
 db = SQLAlchemy()
 
-#db_allegro = connect()
-
 
 class Namespaces(Enum):
     HOMEPAGE = "<http://xmlns.com/foaf/0.1/homepage>"
@@ -35,10 +33,15 @@ class Namespaces(Enum):
 
 def get_db():
     """
-    Cria conexão com o SQLAlchemy
+    Cria conexão com o SQLAlchemy (Python SQL toolkit e Object Relational Mapper).
 
-    :param x:
-    :return:
+    Parâmetros de entrada:
+       nenhum
+
+    Parâmetros de saída:
+        Caso sucesso, g: Flask object.
+            Objeto de conexão do SQLAlchemy com o Flask.
+        Caso erro, indica status de erro exit(1).
     """
 
     if 'db' not in g:
@@ -53,10 +56,15 @@ def get_db():
 
 def encoded_id(x: str) -> str:
     """
-    Recebe uma string, e retorna uma string em base64
-    :param x:
-    :return:
+    Recebe uma string e retorna uma string em base64.
+
+    Parâmetros de entrada:
+       x: str
+
+    Parâmetros de saída:
+        encoded: str em base64
     """
+
     import base64
     encoded = base64.urlsafe_b64encode(x.encode('utf-8'))
     return encoded.decode('utf-8')
@@ -64,16 +72,31 @@ def encoded_id(x: str) -> str:
 
 def decoded_id(x: str) -> str:
     """
-    Recebe uma string codificada em base64, e retorna a string original
-    :param x:
-    :return:
+    Recebe uma string codificada em base64 e retorna a string original.
+
+    Parâmetros de entrada:
+       x: str em base64
+
+    Parâmetros de saída:
+        decoded: str
     """
+
     import base64
     decoded = base64.urlsafe_b64decode(x.encode('utf-8'))
     return decoded.decode('utf-8')
 
 
 def create_app(config_name):
+    """
+    Cria a aplicação flask com as configurações definidas pelas variáveis de ambiente.
+
+    Parâmetros de entrada:
+       config_name: os.getenv('FLASK_CONFIG')
+
+    Parâmetros de saída:
+        app: Flask(__name__, instance_relative_config=True)
+    """
+
     # Initialize the app
     app = Flask(__name__, instance_relative_config=True)
     app.config.from_object(app_config[config_name])

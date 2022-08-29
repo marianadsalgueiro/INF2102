@@ -109,7 +109,8 @@ def registro_busca(string):
             Termo de busca.
 
     Parâmetros de saída:
-        nenhum
+        Caso sucesso, nenhum.
+        Caso erro, print da exceção.
     """
 
     if request.headers.getlist('X-Forwarded-For'):
@@ -136,7 +137,8 @@ def registro_frequencia(string):
             Termo de busca.
 
     Parâmetros de saída:
-        nenhum
+        Caso sucesso, nenhum.
+        Caso erro, print da exceção.
     """
     termo = Frequencia_Termos.query.filter_by(pk_palavra=string.lower()).first()
 
