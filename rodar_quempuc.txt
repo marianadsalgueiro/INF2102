@@ -2,7 +2,7 @@ conectar a vm
 
 abre o anaconda prompt 
 -ssh buscapuc
-colocar a senha Gesto90*Papagaio
+colocar a senha 
 
 rodar o site
 
